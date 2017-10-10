@@ -2,7 +2,8 @@
 更改mysql存储位置
 mysql一条记录中存储多张图片
 --------------------------------------
-
+@genericgenerator strategy=native
+----------------------------------------
 drop database if exists mdvs_test;
 create database mdvs_test;
 use mdvs_test;
