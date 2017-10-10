@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<!-- specify the location of Spring configuration file -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<!-- register openSessionInViewFilter -->
+	<filter>
+		<filter-name>openSessionInView</filter-name>
+		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+		<!-- 
+		默认 OpenSessionInViewFilter加载的SessionFactory名称为sessionFactory
+		这里指定自己定义的SessionFactory的名称，让OpenSessionInViewFilter加载
+		
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>mySessionFactory</param-value>
+		</init-param> 
+		-->
+	</filter>
+	<filter-mapping>
+		<filter-name>openSessionInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 
+	register Struts2 startup
+	register Filter 
+	-->
+	<filter>
+		<filter-name>Struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 
+	register Listener 
+		create Spring container
+		put the container into ServletContext as an attribute
+	-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 
+	<servlet>
+		<servlet-name>registerServlet</servlet-name>
+		<servlet-class>servlets.registerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registerServlet</servlet-name>
+		<url-pattern>/registerServlet</url-pattern>
+	</servlet-mapping>
+	 -->
+</web-app>
