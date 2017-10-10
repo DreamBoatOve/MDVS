@@ -1,0 +1,366 @@
+尝试SSH多表
+更改mysql存储位置
+mysql一条记录中存储多张图片
+--------------------------------------
+
+drop database if exists mdvs_test;
+create database mdvs_test;
+use mdvs_test;
+
+insert into a(a1,a2,a3) values(11,12,13);
+insert into a(a1,a2,a3) values(21,22,23);
+insert into b(b1,b2,b3) values(11,12,13);
+insert into b(b1,b2,b3) values(21,22,23);
+insert into method(a,b) values(1,1);
+insert into method(a,b) values(1,2);
+insert into method(a,b) values(2,1);
+insert into method(a,b) values(2,2);
+insert into method(a,b) values(2,2);
+insert into son(id,s1,s2) values(1,1,1);
+insert into son(id,s1,s2) values(2,2,2);
+insert into mother(m1,m2) values(1,1);
+insert into mother(m1,m2) values(2,2);
+
+source G://PowerDesign/WorkSpaceOfPowerDesign/SQL/t1.sql;
+
+金属材料的测量仪器的参数
+实验材料编号
+Experimental_Materials_Sequence
+实验材料-成分
+Experimental_Materials_Composition
+实验材料-加工工艺
+Experimental_Materials_Processing
+实验材料-加工工艺-加工成型
+Experimental_Materials_Processing_Molding
+实验材料加工工艺-成型-铸造
+Experimental_Materials_Processing_Casting
+实验材料加工工艺-成型-锻造
+Experimental_Materials_Processing_Forging
+实验材料加工工艺-成型-焊接
+Experimental_Materials_Processing_Welding
+实验材料加工工艺-成型-粉末冶金
+Experimental_Materials_Processing_Power_Metallurgy
+实验材料加工工艺-成型-3D打印
+Experimental_Materials_Processing_3D_Print
+实验材料加工工艺-成型-烧结
+Experimental_Materials_Processing_Sintering
+实验材料加工工艺-成型-其他
+Experimental_Materials_Processing_Other
+实验材料-加工工艺-热处理
+Experimental_Materials_Processing_HeatTreatment
+实验材料-加工工艺-热处理-淬火
+Experimental_Materials_Processing_HeatTreatment_Quenching
+实验材料-加工工艺-热处理-回火
+Experimental_Materials_Processing_HeatTreatment_Tempering
+实验材料-加工工艺-热处理-正火
+Experimental_Materials_Processing_HeatTreatment_Normalizing
+实验材料-加工工艺-热处理-退火
+Experimental_Materials_Processing_HeatTreatment_Anealing
+实验材料-加工工艺-表面处理
+Experimental_Materials_Processing_SurfaceTreatment
+实验材料-加工工艺-表面处理-气相沉积
+Experimental_Materials_Processing_SurfaceTreatment_Vapor_Deposition
+实验材料-加工工艺-表面处理-电泳
+Experimental_Materials_Processing_SurfaceTreatment_Electrophoresis
+实验材料-加工工艺-表面处理-阳极氧化
+Experimental_Materials_Processing_SurfaceTreatment_Anodic_Oxidation
+实验材料-加工工艺-表面处理-热喷涂
+Experimental_Materials_Processing_SurfaceTreatment_Thermal_Spraying
+实验材料-加工工艺-表面处理-PVD真空镀
+Experimental_Materials_Processing_SurfaceTreatment_PVD_Vacuum_Plating
+实验材料-加工工艺-表面处理-粉末喷涂
+Experimental_Materials_Processing_SurfaceTreatment_Powder_Spraying
+实验材料-加工工艺-表面处理-电镀
+Experimental_Materials_Processing_SurfaceTreatment_Electroplating
+实验材料-加工工艺-表面处理-化学镀
+Experimental_Materials_Processing_SurfaceTreatment_Chemical_Plating
+实验材料-加工工艺-表面处理-喷砂
+Experimental_Materials_Processing_SurfaceTreatment_Blast_Sanding
+实验材料-加工工艺-表面处理-抛光
+Experimental_Materials_Processing_SurfaceTreatment_Polish
+实验材料-加工工艺-表面处理-微弧氧化
+Experimental_Materials_Processing_SurfaceTreatment_Micro-arc_Oxidation
+实验材料-结构
+Experimental_Materials_Structure
+实验材料-结构-晶体取向
+Experimental_Materials_Structure_Crystal_Orientation
+实验材料-结构-晶体结构
+Experimental_Materials_Structure_Crystal_Structure
+实验材料-结构-晶体缺陷
+Experimental_Materials_Structure_Crystal_Defect
+实验材料-结构-组织
+Experimental_Materials_Structure_Organize
+实验材料-结构-相
+Experimental_Materials_Structure_Phase
+实验材料-结构-表面状态
+Experimental_Materials_Structure_Surface_States
+实验材料-服役性能
+Experimental_Materials
+实验材料-服役性能-环境
+Experimental_Materials_Service_Performance_Environment
+For short:
+E_M_S_P_Environment
+实验材料-服役性能-环境-大气
+E_M_S_P_Environment_Atmosphere
+实验材料-服役性能-环境-海洋
+E_M_S_P_Environment_Ocean
+实验材料-服役性能-环境-常规
+E_M_S_P_Environment_Convention
+实验材料-服役性能-环境-石油管道
+E_M_S_P_Environment_Oil_Pipeline
+实验材料-服役性能-环境-核电
+E_M_S_P_Environment_NuclearPower
+实验材料-服役性能-环境-微生物
+E_M_S_P_Environment_Microorganism
+实验材料-服役性能-性能测试
+E_M_S_P_Performance_Test
+实验材料-服役性能-性能测试-疲劳
+E_M_S_P_Performance_Test_Fatigue
+实验材料-服役性能-性能测试-腐蚀
+E_M_S_P_Performance_Test_Corrsion
+实验材料-服役性能-性能测试-腐蚀-国标
+E_M_S_P_Performance_Test_Corrsion_GB
+实验材料-服役性能-性能测试-腐蚀-常规电化学测试
+E_M_S_P_Performance_Test_Corrsion_Conventional_Electrochemical_Test
+For short:
+E_M_S_P_P_T_Corrsion_Conventional_Electrochemical_Test
+实验材料-服役性能-性能测试-腐蚀-常规电化学测试-OCP
+E_M_S_P_Performance_Test_Corrsion_Conventional_Electrochemical_Test_OCP
+For short:
+E_M_S_P_P_T_Corrsion_Conventional_Electrochemical_Test_OCP
+实验材料-服役性能-性能测试-腐蚀-常规电化学测试-EIS
+E_M_S_P_Performance_Test_Corrsion_Conventional_Electrochemical_Test_EIS
+For short:
+E_M_S_P_P_T_Corrsion_Conventional_Electrochemical_Test_EIS
+实验材料-服役性能-性能测试-腐蚀-常规电化学测试-PD
+E_M_S_P_Performance_Test_Corrsion_Conventional_Electrochemical_Test_PD
+For short:
+E_M_S_P_P_T_Corrsion_Conventional_Electrochemical_Test_PD
+实验材料-服役性能-性能测试-腐蚀-常规电化学测试-CV
+E_M_S_P_Performance_Test_Corrsion_Conventional_Electrochemical_Test_CV
+For short:
+E_M_S_P_P_T_Corrsion_Conventional_Electrochemical_Test_CV
+实验材料-服役性能-性能测试-断裂
+E_M_S_P_Performance_Test_Fracture
+实验材料-服役性能-性能测试-磨损
+E_M_S_P_Performance_Test_Abrasion
+
+表面状态
+	粗糙度	Roughness
+	变形		Transformation
+	应力		Stress
+	残余应力	Residual Stress
+相
+	铁素体	Ferrite
+	奥氏体	Austenitic
+组织
+	马氏体	Martensite
+	贝氏体	Bainite
+	珠光体	Pearlite
+
+晶体缺陷
+	点缺陷
+		本征缺陷		Intrinsic_Defect
+		杂质缺陷		Impurity_Defect
+	线缺陷
+		位错			Dislocation
+	面缺陷
+		小角度晶界	Low-angle_grain_Boundary
+		大角度晶界	High_angle_grain_Boundary
+		挛晶界面		Bicrystal_Interface
+		堆垛层错		Stacking_Fault
+	体缺陷
+		包藏杂质		Impurity_Inclusion
+		沉淀			Precipitation
+		空洞			Cavity
+
+晶体取向		Crystal_Orientation
+晶体结构		Crystal_Structure
+晶体缺陷		Crystal_Defect
+组织			Organize
+相			Phase
+表面状态		Surface_States
+
+气相沉积		Vapor_Deposition
+电泳			Electrophoresis
+阳极氧化		Anodic_Oxidation
+热喷涂		Thermal_Spraying
+PVD真空镀	PVD_Vacuum_Plating
+粉末喷涂		Powder_Spraying
+电镀			Electroplating
+化学镀		Chemical_Plating
+喷砂			Blast_Sanding
+抛光			Polish
+微弧氧化		Micro-arc_Oxidation
+
+铸造		Casting
+锻造		Forging
+焊接		Welding
+粉末冶金	Power_Metallurgy
+3D打印	3D_Print
+烧结		Sintering
+
+淬火		Quenching
+回火		Tempering
+正火		Normalizing 
+退火		Anealing
+
+字体大小
+	1	28
+	2	24
+	3	20
+	4	16
+	5	12
+
+属性值：
+
+设备
+	名称
+	型号
+	厂家
+工艺参数
+	parameter1
+	parameter2
+	parameter3
+	parameter4
+	parameter5
+	parameter6
+	parameter7
+	parameter8
+	parameter9
+	parameter10
+
+显示
+输入法
+
+drop table if exists num_test;
+create 
+
+High-throughput Combinatorial sample
+
+以下名词的中文名称是否合适？
+不合适请改成正确的中文名称，
+并翻译成对应的英文：
+高通量组合样品--- High-throughput Combinatorial sample
+实验区域---？selected area/experimental region
+实验样品编号---？sample ID/sample number
+化学成分分析---？composition analysis
+组织结构---？microstructure analysis
+腐蚀产物分析---？corrosion product analysis
+
+第 01 号元素: 氢 [化学符号]H, 读“轻”
+第 02 号元素: 氦 [化学符号]He, 读“亥”
+第 03 号元素: 锂 [化学符号]Li, 读“里”
+第 04 号元素: 铍 [化学符号]Be, 读“皮”
+第 05 号元素: 硼 [化学符号]B, 读“朋”
+第 06 号元素: 碳 [化学符号]C, 读“炭”
+第 07 号元素: 氮 [化学符号]N, 读“淡”
+第 08 号元素: 氧 [化学符号]O, 读“养”
+第 09 号元素: 氟 [化学符号]F, 读“弗”
+第 10 号元素: 氖 [化学符号]Ne, 读“乃”
+第 11 号元素: 钠 [化学符号]Na, 读“纳”
+第 12 号元素: 镁 [化学符号]Mg, 读“美”
+第 13 号元素: 铝 [化学符号]Al, 读“吕”
+第 14 号元素: 硅 [化学符号]Si, 读“归”
+第 15 号元素: 磷 [化学符号]P, 读“邻”
+第 16 号元素: 硫 [化学符号]S, 读“流”
+第 17 号元素: 氯 [化学符号]Cl, 读“绿”
+第 18 号元素: 氩 [化学符号]Ar,A, 读“亚”
+第 19 号元素: 钾 [化学符号]K, 读“甲”
+第 20 号元素: 钙 [化学符号]Ca, 读“丐”
+第 21 号元素: 钪 [化学符号]Sc, 读“亢”
+第 22 号元素: 钛 [化学符号]Ti, 读“太”
+第 23 号元素: 钒 [化学符号]V, 读“凡”
+第 24 号元素: 铬 [化学符号]Cr, 读“各”
+第 25 号元素: 锰 [化学符号]Mn, 读“猛”
+第 26 号元素: 铁 [化学符号]Fe, 读“铁”
+第 27 号元素: 钴 [化学符号]Co, 读“古”
+第 28 号元素: 镍 [化学符号]Ni, 读“臬”
+第 29 号元素: 铜 [化学符号]Cu, 读“同”
+第 30 号元素: 锌 [化学符号]Zn, 读“辛”
+第 31 号元素: 镓 [化学符号]Ga, 读“家”
+第 32 号元素: 锗 [化学符号]Ge, 读“者”
+第 33 号元素: 砷 [化学符号]As, 读“申”
+第 34 号元素: 硒 [化学符号]Se, 读“西”
+第 35 号元素: 溴 [化学符号]Br, 读“秀”
+第 36 号元素: 氪 [化学符号]Kr, 读“克”
+第 37 号元素: 铷 [化学符号]Rb, 读“如”
+第 38 号元素: 锶 [化学符号]Sr, 读“思”
+第 39 号元素: 钇 [化学符号]Y, 读“乙”
+第 40 号元素: 锆 [化学符号]Zr, 读“告”
+第 41 号元素: 铌 [化学符号]Nb, 读“尼”
+第 42 号元素: 钼 [化学符号]Mo, 读“目”
+第 43 号元素: 碍 [化学符号]Tc, 读“得”
+第 44 号元素: 钌 [化学符号]Ru, 读“了”
+第 45 号元素: 铑 [化学符号]Rh, 读“老”
+第 46 号元素: 钯 [化学符号]Pd, 读“巴”
+第 47 号元素: 银 [化学符号]Ag, 读“银”
+第 48 号元素: 镉 [化学符号]Cd, 读“隔”
+第 49 号元素: 铟 [化学符号]In, 读“因”
+第 50 号元素: 锡 [化学符号]Sn, 读“西”
+第 51 号元素: 锑 [化学符号]Sb, 读“梯”
+第 52 号元素: 碲 [化学符号]Te, 读“帝”
+第 53 号元素: 碘 [化学符号]I, 读“典”
+第 54 号元素: 氙 [化学符号]Xe, 读“仙”
+第 55 号元素: 铯 [化学符号]Cs, 读“色”
+第 56 号元素: 钡 [化学符号]Ba, 读“贝”
+第 57 号元素: 镧 [化学符号]La, 读“兰”
+第 58 号元素: 铈 [化学符号]Ce, 读“市”
+第 59 号元素: 镨 [化学符号]Pr, 读“普”
+第 60 号元素: 钕 [化学符号]Nd, 读“女”
+第 61 号元素: 钷 [化学符号]Pm, 读“颇”
+第 62 号元素: 钐 [化学符号]Sm, 读“衫”
+第 63 号元素: 铕 [化学符号]Eu, 读“有”
+第 64 号元素: 钆 [化学符号]Gd, 读“轧”
+第 65 号元素: 铽 [化学符号]Tb, 读“忒”
+第 66 号元素: 镝 [化学符号]Dy, 读“滴”
+第 67 号元素: 钬 [化学符号]Ho, 读“火”
+第 68 号元素: 铒 [化学符号]Er, 读“耳”
+第 69 号元素: 铥 [化学符号]Tm, 读“丢”
+第 70 号元素: 镱 [化学符号]Yb, 读“意”
+第 71 号元素: 镥 [化学符号]Lu, 读“鲁”
+第 72 号元素: 铪 [化学符号]Hf, 读“哈”
+第 73 号元素: 钽 [化学符号]Ta, 读“坦”
+第 74 号元素: 钨 [化学符号]W, 读“乌”
+第 75 号元素: 铼 [化学符号]Re, 读“来”
+第 76 号元素: 锇 [化学符号]Os, 读“鹅”
+第 77 号元素: 铱 [化学符号]Ir, 读“衣”
+第 78 号元素: 铂 [化学符号]Pt, 读“伯“
+第 79 号元素: 金 [化学符号]Au, 读“今”
+第 80 号元素: 汞 [化学符号]Hg, 读“拱”
+第 81 号元素: 铊 [化学符号]Tl, 读“他”
+第 82 号元素: 铅 [化学符号]Pb, 读“千”
+第 83 号元素: 铋 [化学符号]Bi, 读“必”
+第 84 号元素: 钋 [化学符号]Po, 读“泼”
+第 85 号元素: 砹 [化学符号]At, 读“艾”
+第 86 号元素: 氡 [化学符号]Rn, 读“冬”
+第 87 号元素: 钫 [化学符号]Fr, 读“方”
+第 88 号元素: 镭 [化学符号]Ra, 读“雷”
+第 89 号元素: 锕 [化学符号]Ac, 读“阿”
+第 90 号元素: 钍 [化学符号]Th, 读“土”
+第 91 号元素: 镤 [化学符号]Pa, 读“仆”
+第 92 号元素: 铀 [化学符号]U, 读“由”
+第 93 号元素: 镎 [化学符号]Np, 读“拿”
+第 94 号元素: 钚 [化学符号]Pu, 读“不”
+第 95 号元素: 镅 [化学符号]Am, 读“眉”
+第 96 号元素: 锔 [化学符号]Cm, 读“局”
+第 97 号元素: 锫 [化学符号]Bk, 读“陪”
+第 98 号元素: 锎 [化学符号]Cf, 读“开”
+第 99 号元素: 锿 [化学符号]Es, 读“哀”
+第 100 号元素: 镄 [化学符号]Fm, 读“费”
+第 101 号元素: 钔 [化学符号]Md, 读“门”
+第 102 号元素: 锘 [化学符号]No, 读“诺”
+第 103 号元素: 铹 [化学符号]Lw, 读“劳”
+第 104 号元素: 𬬻 [化学符号]Rf, 读“卢”
+第 105 号元素: 𬭊 [化学符号]Db, 读“杜”
+第 106 号元素: 𬭳 [化学符号]Sg , 读”喜“
+第 107 号元素: 𬭛 [化学符号]Bh, 读"波“
+第 108 号元素: 𬭶 [化学符号]Hs, 读”黑“
+第 109 号元素: 鿏 [化学符号]Mt, 读"麦"
+第 110 号元素: 𫟼 [化学符号]Ds, 读”达“
+第 111 号元素: 钅仑 [化学符号]Rg, , 读”伦“
+第 112 号元素: uub（112）
+第 113 号元素: uut（113）
+第 114 号元素: uuq（114）
+第 115 号元素: uup（115）
+第 116 号元素: uuh（116）
