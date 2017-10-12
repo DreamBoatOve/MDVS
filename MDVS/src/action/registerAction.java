@@ -14,7 +14,7 @@ import service.IStudentService;
 
 @Component("registerAction")
 @Scope("prototype")
-@Namespace("/mdvs")
+@Namespace("/index")
 @ParentPackage("struts-default")
 public class registerAction 
 {

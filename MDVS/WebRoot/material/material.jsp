@@ -4,9 +4,26 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Insert title here</title>
+		<title>Add Material</title>
 	</head>
 	<body>
-	
+		<form action="addMaterial.action" method="post">
+			Material Name:
+				<input type="text" name="materialName" />
+				<br />
+			Color:
+				<input type="radio" name="color" value="b" />Black
+				<input type="radio" name="color" value="c" />Colorful
+				<br/>
+			Reserves:
+				<input type="radio" name="reserves" value="c" />Common		
+				<input type="radio" name="reserves" value="r" />Rare
+				<br />
+			Density:
+				<input type="radio" name="density" value="l" />Light
+				<input type="radio" name="density" value="h" />Heavy
+				<br />
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</form>
 	</body>
 </html>

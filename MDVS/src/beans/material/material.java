@@ -18,7 +18,7 @@ public class material
 	private String materialName;
 	private char black_Colorful;
 	private char light_Heavy;
-	private char common_rare;
+	private char common_Rare;
 	
 	public Integer getId()
 	{
@@ -54,10 +54,10 @@ public class material
 	}
 	public char getCommon_rare() 
 	{
-		return common_rare;
+		return common_Rare;
 	}
-	public void setCommon_rare(char common_rare) 
+	public void setCommon_rare(char common_Rare) 
 	{
-		this.common_rare = common_rare;
+		this.common_Rare = common_Rare;
 	}
 }
