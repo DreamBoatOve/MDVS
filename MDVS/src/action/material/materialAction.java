@@ -1,5 +1,7 @@
 package action.material;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -88,6 +90,20 @@ public class materialAction
 		m.setMaterialDensity(density);
 		m.setMaterialScale(scale);
 		materialService.addMaterial(m);
+		return "success";
+	}
+	public String findMaterialNames()
+	{
+		System.out.println("Finding all the materials... ");
+		List<String> materialNames = materialService.findMaterialNames();
+		return "success";
+	}
+	public String modifyMaterial()
+	{
+		System.out.println("Modify... ");
+		System.out.println("Original Info: "+materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
+		
+		System.out.println("Final Info: "+materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
 		return "success";
 	}
 }
