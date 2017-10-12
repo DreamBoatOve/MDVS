@@ -3,13 +3,17 @@ package beans.material;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import beans.material.service.test.test;
+
 @Entity
 @Table
-public class material 
+public class material
 {
 	@Id
 	@GenericGenerator(name="material_Id_Generator",strategy="native")
@@ -19,6 +23,13 @@ public class material
 	private char black_Colorful;                                       
 	private char light_Heavy;
 	private char common_Rare;
+	
+	//关联材料-服役-测试
+	//定义material实体关联的test实体
+	@OneToOne(targetEntity=test.class)
+	//映射名为test_id的外键列
+	@JoinColumn(name="test_id",referencedColumnName="test_id",unique=true)
+	private test test;
 	
 	public Integer getId()
 	{
@@ -52,12 +63,20 @@ public class material
 	{
 		this.light_Heavy = light_Heavy;
 	}
-	public char getCommon_rare() 
+	public char getCommon_Rare() 
 	{
 		return common_Rare;
 	}
-	public void setCommon_rare(char common_Rare) 
+	public void setCommon_Rare(char common_Rare) 
 	{
 		this.common_Rare = common_Rare;
+	}
+	public test getTest() 
+	{
+		return test;
+	}
+	public void setTest(test test) 
+	{
+		this.test = test;
 	}
 }
