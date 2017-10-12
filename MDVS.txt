@@ -25,6 +25,8 @@ insert into mother(m1,m2) values(2,2);
 
 source G://PowerDesign/WorkSpaceOfPowerDesign/SQL/t1.sql;
 
+实验材料
+
 金属材料的测量仪器的参数
 实验材料编号
 Experimental_Materials_Sequence

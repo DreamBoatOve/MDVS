@@ -16,7 +16,7 @@ public class material
 	@GeneratedValue(generator="material_Id_Generator")
 	private Integer id;
 	private String materialName;
-	private char black_Colorful;
+	private char black_Colorful;                                       
 	private char light_Heavy;
 	private char common_Rare;
 	
@@ -32,7 +32,7 @@ public class material
 	{
 		return materialName;
 	}
-	public void setMaterialName(String materialName) 
+	public void setMaterialName(String materialName)
 	{
 		this.materialName = materialName;
 	}
