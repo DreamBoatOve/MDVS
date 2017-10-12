@@ -3,6 +3,7 @@
 mysql一条记录中存储多张图片
 搞清struts2
 --------------------------------------
+查询要模糊匹配
 @genericgenerator strategy=native
 ----------------------------------------
 drop database if exists mdvs_test;

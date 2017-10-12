@@ -42,4 +42,9 @@ public class corrsion
 	{
 		this.col = col;
 	}
+	
+	private corrsion() 
+	{
+		super();
+	}
 }

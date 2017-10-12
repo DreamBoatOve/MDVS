@@ -79,4 +79,16 @@ public class material
 	{
 		this.test = test;
 	}
+
+	private material() 
+	{}
+	private material(String materialName, char black_Colorful, char light_Heavy, char common_Rare) 
+	{
+		this.materialName = materialName;
+		this.black_Colorful = black_Colorful;
+		this.light_Heavy = light_Heavy;
+		this.common_Rare = common_Rare;
+	}
+	
+	
 }

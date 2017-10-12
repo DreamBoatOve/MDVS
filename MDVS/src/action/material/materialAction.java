@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import beans.Student;
+import service.material.IMaterialService;
 
 @Component("materialAction")
 @Scope("prototype")
@@ -19,39 +20,63 @@ public class materialAction
 	private char color;
 	private char reserves;
 	private char density;
+	private char convention_microScale;
 	
-	public String getMaterialName() {
+	private IMaterialService materialService;
+	
+	public String getMaterialName() 
+	{
 		return materialName;
 	}
-	public void setMaterialName(String materialName) {
+	public void setMaterialName(String materialName) 
+	{
 		this.materialName = materialName;
 	}
-	public char getColor() {
+	public char getColor() 
+	{
 		return color;
 	}
-	public void setColor(char color) {
+	public void setColor(char color) 
+	{
 		this.color = color;
 	}
-	public char getReserves() {
+	public char getReserves() 
+	{
 		return reserves;
 	}
-	public void setReserves(char reserves) {
+	public void setReserves(char reserves) 
+	{
 		this.reserves = reserves;
 	}
-	public char getDensity() {
+	public char getDensity() 
+	{
 		return density;
 	}
-	public void setDensity(char density) {
+	public void setDensity(char density)
+	{
 		this.density = density;
 	}
-	
+	public char getConvention_microScale() 
+	{
+		return convention_microScale;
+	}
+	public void setConvention_microScale(char convention_microScale) 
+	{
+		this.convention_microScale = convention_microScale;
+	}
+	public IMaterialService getMaterialService() 
+	{
+		return materialService;
+	}
+	public void setMaterialService(IMaterialService materialService) 
+	{
+		this.materialService = materialService;
+	}
 	@Action(value="addMaterial", results=@Result(location="/welcome.jsp"))
 	public String execute()
 	{
-		System.out.println(materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
-		//Student stu = new Student(name,age);
-		//service.addStudent(stu);
+		System.out.println("Adding... "+materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
+		
 		return "success";
 	}
-
 }

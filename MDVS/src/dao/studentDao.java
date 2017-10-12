@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import beans.Student;
 //DAO层前必须要加@Transactional
-@Transactional	//教程每加，这个注解是否保留不确定
+@Transactional	//教程没加，这个注解是否保留不确定
 @Repository("studentDao")	////表示当前DAO的Bean的id为studentDao
 public class studentDao implements IStudentDao 
 {

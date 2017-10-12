@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import beans.Student;
 import dao.IStudentDao;
 
-
 @Service("studentService")	//表示当前Service的Bean的id为studentService
 public class studentServiceImple implements IStudentService 
 {

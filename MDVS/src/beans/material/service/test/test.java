@@ -60,4 +60,9 @@ public class test
 	public void setWear(Integer wear) {
 		this.wear = wear;
 	}
+	
+	private test() 
+	{
+		super();
+	}
 }
