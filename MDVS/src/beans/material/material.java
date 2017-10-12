@@ -19,10 +19,16 @@ public class material
 	@GenericGenerator(name="material_Id_Generator",strategy="native")
 	@GeneratedValue(generator="material_Id_Generator")
 	private Integer id;
+	//材料名称
 	private String materialName;
-	private char black_Colorful;                                       
-	private char light_Heavy;
-	private char common_Rare;
+	//材料颜色 黑色/有色
+	private String materialColor;
+	//材料重量 轻金属/重金属
+	private String materialDensity;
+	//材料储量 常量金属/微量
+	private String materialReserves;
+	//材料实验区域大小 常规/微区
+	private String materialScale; 
 	
 	//关联材料-服役-测试
 	//定义material实体关联的test实体
@@ -30,65 +36,66 @@ public class material
 	//映射名为test_id的外键列
 	@JoinColumn(name="test_id",referencedColumnName="test_id",unique=true)
 	private test test;
-	
-	public Integer getId()
-	{
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer id)
-	{
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getMaterialName() 
-	{
+
+	public String getMaterialName() {
 		return materialName;
 	}
-	public void setMaterialName(String materialName)
-	{
+
+	public void setMaterialName(String materialName) {
 		this.materialName = materialName;
 	}
-	public char getBlack_Colorful() 
-	{
-		return black_Colorful;
+	public String getMaterialColor() {
+		return materialColor;
 	}
-	public void setBlack_Colorful(char black_Colorful) 
-	{
-		this.black_Colorful = black_Colorful;
+	public void setMaterialColor(String materialColor) {
+		this.materialColor = materialColor;
 	}
-	public char getLight_Heavy() 
-	{
-		return light_Heavy;
+	public String getMaterialDensity() {
+		return materialDensity;
 	}
-	public void setLight_Heavy(char light_Heavy) 
-	{
-		this.light_Heavy = light_Heavy;
+	public void setMaterialDensity(String materialDensity) {
+		this.materialDensity = materialDensity;
 	}
-	public char getCommon_Rare() 
-	{
-		return common_Rare;
+	public String getMaterialReserves() {
+		return materialReserves;
 	}
-	public void setCommon_Rare(char common_Rare) 
-	{
-		this.common_Rare = common_Rare;
+	public void setMaterialReserves(String materialReserves) {
+		this.materialReserves = materialReserves;
 	}
-	public test getTest() 
-	{
+	public String getMaterialScale() {
+		return materialScale;
+	}
+	public void setMaterialScale(String materialScale) {
+		this.materialScale = materialScale;
+	}
+	public test getTest() {
 		return test;
 	}
-	public void setTest(test test) 
+	public void setTest(test test)
 	{
 		this.test = test;
 	}
 
-	private material() 
-	{}
-	private material(String materialName, char black_Colorful, char light_Heavy, char common_Rare) 
+	public material() 
 	{
-		this.materialName = materialName;
-		this.black_Colorful = black_Colorful;
-		this.light_Heavy = light_Heavy;
-		this.common_Rare = common_Rare;
+		super();
 	}
-	
-	
+	public material(String materialName, String materialColor, String materialDensity, String materialReserves,
+			String materialScale) 
+	{
+		super();
+		this.materialName = materialName;
+		this.materialColor = materialColor;
+		this.materialDensity = materialDensity;
+		this.materialReserves = materialReserves;
+		this.materialScale = materialScale;
+	}
 }

@@ -23,6 +23,10 @@
 				<input type="radio" name="density" value="l" />Light
 				<input type="radio" name="density" value="h" />Heavy
 				<br />
+			Experiment Scale:
+				<input type="radio" name="scale" value="c" />Convention
+				<input type="radio" name="scale" value="m" />Microcell
+				<br />
 			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 		</form>
 	</body>

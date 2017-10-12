@@ -39,9 +39,9 @@ public class materialService implements IMaterialService
 	}
 	@Transactional
 	@Override
-	public void modifyMaterialByName(String materialName) 
+	public void modifyMaterial(material material) 
 	{
-		materialDao.modifyMaterialByName(materialName);
+		materialDao.updateMaterial(material);
 	}
 	@Transactional(readOnly=true)
 	@Override

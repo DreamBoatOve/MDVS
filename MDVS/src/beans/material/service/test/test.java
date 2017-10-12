@@ -61,7 +61,7 @@ public class test
 		this.wear = wear;
 	}
 	
-	private test() 
+	public test() 
 	{
 		super();
 	}

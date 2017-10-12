@@ -8,7 +8,7 @@ public interface IMaterialDao
 {
 	public void addMaterial(material material);
 	public void removeMaterialByName(String materialName);
-	public void modifyMaterialByName(String materialName);
+	public void updateMaterial(material material);
 
 	//查询要模糊匹配
 	public List<String> findMaterialNames();

@@ -8,7 +8,7 @@ public interface IMaterialService
 {
 	void addMaterial(material material);
 	void removeMaterialByName(String materialName);
-	void modifyMaterialByName(String materialName);
+	void modifyMaterial(material material);
 
 	//查询要模糊匹配
 	List<String> findMaterialNames();

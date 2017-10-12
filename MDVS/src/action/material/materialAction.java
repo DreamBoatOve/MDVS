@@ -4,10 +4,13 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import beans.Student;
+import beans.material.material;
 import service.material.IMaterialService;
 
 @Component("materialAction")
@@ -17,11 +20,13 @@ import service.material.IMaterialService;
 public class materialAction 
 {
 	private String materialName;
-	private char color;
-	private char reserves;
-	private char density;
-	private char convention_microScale;
+	private String color;
+	private String reserves;
+	private String density;
+	private String scale;
 	
+	@Autowired
+	@Qualifier("materialService")
 	private IMaterialService materialService;
 	
 	public String getMaterialName() 
@@ -32,51 +37,57 @@ public class materialAction
 	{
 		this.materialName = materialName;
 	}
-	public char getColor() 
+	public String getColor() 
 	{
 		return color;
 	}
-	public void setColor(char color) 
+	public void setColor(String color) 
 	{
 		this.color = color;
 	}
-	public char getReserves() 
+	public String getReserves() 
 	{
 		return reserves;
 	}
-	public void setReserves(char reserves) 
+	public void setReserves(String reserves) 
 	{
 		this.reserves = reserves;
 	}
-	public char getDensity() 
+	public String getDensity() 
 	{
 		return density;
 	}
-	public void setDensity(char density)
+	public void setDensity(String density) 
 	{
 		this.density = density;
-	}
-	public char getConvention_microScale() 
-	{
-		return convention_microScale;
-	}
-	public void setConvention_microScale(char convention_microScale) 
-	{
-		this.convention_microScale = convention_microScale;
 	}
 	public IMaterialService getMaterialService() 
 	{
 		return materialService;
+	}
+	public String getScale() 
+	{
+		return scale;
+	}
+	public void setScale(String scale)
+	{
+		this.scale = scale;
 	}
 	public void setMaterialService(IMaterialService materialService) 
 	{
 		this.materialService = materialService;
 	}
 	@Action(value="addMaterial", results=@Result(location="/welcome.jsp"))
-	public String execute()
+	public String addMaterial()
 	{
 		System.out.println("Adding... "+materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
-		
+		material m = new material();
+		m.setMaterialName(materialName);
+		m.setMaterialColor(color);
+		m.setMaterialReserves(reserves);
+		m.setMaterialDensity(density);
+		m.setMaterialScale(scale);
+		materialService.addMaterial(m);
 		return "success";
 	}
 }

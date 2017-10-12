@@ -43,7 +43,7 @@ public class corrsion
 		this.col = col;
 	}
 	
-	private corrsion() 
+	public corrsion() 
 	{
 		super();
 	}
