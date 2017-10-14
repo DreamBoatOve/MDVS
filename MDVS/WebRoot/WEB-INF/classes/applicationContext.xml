@@ -30,11 +30,11 @@
 				<!-- Dialect -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<!-- automatically create database every time-->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
-				<!-- 
-				automatically update database 
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
+				
+				<!-- automatically update database --> 
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				-->
+				
 				<!-- show executed sql -->
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>

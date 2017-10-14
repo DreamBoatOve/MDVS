@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -14,16 +15,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import Utils.Json.jsonConvert;
-import beans.Student;
 import beans.material.material;
 import service.material.IMaterialService;
+import sun.text.normalizer.Trie.DataManipulate;
 
 @Component("materialAction")
 @Scope("prototype")
 @Namespace("/material")
-@ParentPackage("struts-default")
-public class materialAction 
+@ParentPackage("struts-default,json-default")
+public class materialAction
 {
 	private String materialName;
 	private String color;
@@ -97,13 +100,16 @@ public class materialAction
 		return "success";
 	}
 	@ResponseBody
-	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp"),@Result(name="error",location="/error.jsp"),@Result(params={"materialNames_JA_Str","${materialNames_JA_Str}"})})
+	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp"),@Result(name="error",location="/error.jsp")})
 	public String findMaterialNames()
 	{
 		System.out.println("Finding all the materials... ");
 		List<String> materialNamesList = materialService.findMaterialNames();
 		//_JA means JSON ARRAY
 		String materialNames_JA_Str = jsonConvert.List_To_JSONArray(materialNamesList);
+		System.out.println("materialNames_JA_Str: "+materialNames_JA_Str);
+		//ActionContext.getContext().getSession().put("m",materialNames_JA_Str);
+		//ServletActionContext.getRequest().setAttribute("m",materialNames_JA_Str);
 		return "success";
 	}
 	public String modifyMaterial()

@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="org.springframework.web.context.request.SessionScope"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false"%>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -6,15 +9,20 @@
 		<title>Add Material</title>
 		<script type="text/javascript" src="../js/JQuery/jquery-3.2.1.js"></script>
 		<script type="text/javascript">
-			var materialNames_JA_Str = <%=request.getParameter("materialNames_JA_Str")%>;
-			alert("materialNames_JA_Str: "+materialNames_JA_Str);
-			var materialNames_Json = eval('('+materialNames_JA_Str+')');
-			function checkMaterialNames()
+			function check()
 			{
-				for(i = 0;i<materialNames_Json.length;i++)
-				{
-					alert("material Name: "+materialNames_Json[i]);
-				}
+				$("#showArea").hide();
+				//指定向JSONExample发送请求，将id为form2的表单所包含的表单控件转换为请求参数
+				$.post("JSONExample",$("form2").serializeArray(),
+						//指定回调函数
+						function(data,statusText)
+						{
+							for(var d in data.length)
+							{
+								$("#showArea").append
+							}
+						}
+					  );
 			}
 		</script>
 	</head>
@@ -22,7 +30,7 @@
 		<form action="../material/addMaterial.action" method="post">
 			Material Name:
 				<input type="text" name="materialName" />
-				<br />
+				<br />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 			Color:
 				<input type="radio" name="color" value="b" />Black
 				<input type="radio" name="color" value="c" />Colorful
@@ -41,9 +49,9 @@
 				<br />
 			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 		</form><hr />
-		<form action="../material/findMaterialNames.action" method="post">
-			<input type="button" value="Check material names" onclick="checkMaterialNames()"/>
-			<span id="a1"></span>
-		</form>
+		<s:form id="form2" action="../material/findMaterialNames.action" method="post">
+			<input type="button" value="Show materials" onclick="check();" />
+			<div id="showArea"></div>
+		</s:form>
 	</body>
 </html>
