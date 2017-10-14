@@ -1,6 +1,8 @@
 package action.material;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import Utils.Json.jsonConvert;
 import beans.Student;
 import beans.material.material;
 import service.material.IMaterialService;
@@ -79,7 +83,7 @@ public class materialAction
 	{
 		this.materialService = materialService;
 	}
-	@Action(value="addMaterial", results=@Result(location="/welcome.jsp"))
+	@Action(value="addMaterial", results=@Result(location="/success.jsp"))
 	public String addMaterial()
 	{
 		System.out.println("Adding... "+materialName+" color:"+color+" reserves:"+reserves+" density:"+density);
@@ -92,10 +96,14 @@ public class materialAction
 		materialService.addMaterial(m);
 		return "success";
 	}
+	@ResponseBody
+	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp"),@Result(name="error",location="/error.jsp"),@Result(params={"materialNames_JA_Str","${materialNames_JA_Str}"})})
 	public String findMaterialNames()
 	{
 		System.out.println("Finding all the materials... ");
-		List<String> materialNames = materialService.findMaterialNames();
+		List<String> materialNamesList = materialService.findMaterialNames();
+		//_JA means JSON ARRAY
+		String materialNames_JA_Str = jsonConvert.List_To_JSONArray(materialNamesList);
 		return "success";
 	}
 	public String modifyMaterial()
