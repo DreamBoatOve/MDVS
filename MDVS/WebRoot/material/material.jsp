@@ -17,11 +17,13 @@
 						//指定回调函数
 						function(data,statusText)
 						{
-							for(var d in data.length)
+							for(var d in data)
 							{
-								$("#showArea").append
+								$("#showArea").append(d+"-->"+data[d]+"<br />");
 							}
-						}
+							$("#showArea").show(600);
+						},
+						"json"
 					  );
 			}
 		</script>

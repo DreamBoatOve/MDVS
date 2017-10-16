@@ -99,8 +99,7 @@ public class materialAction
 		materialService.addMaterial(m);
 		return "success";
 	}
-	@ResponseBody
-	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp"),@Result(name="error",location="/error.jsp")})
+	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp",type="json",params={"noCache","true","contentType","text/html"}),@Result(name="error",location="/error.jsp")})
 	public String findMaterialNames()
 	{
 		System.out.println("Finding all the materials... ");
