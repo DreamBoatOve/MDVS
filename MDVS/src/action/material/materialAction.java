@@ -9,6 +9,8 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.json.annotations.JSON;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
 import Utils.Json.jsonConvert;
 import beans.material.material;
@@ -25,12 +28,16 @@ import sun.text.normalizer.Trie.DataManipulate;
 @Component("materialAction")
 @Scope("prototype")
 @Namespace("/material")
-@ParentPackage("struts-default,json-default")
-public class materialAction
+//@ParentPackage("struts-default")
+@ParentPackage("json-default")
+public class materialAction extends ActionSupport
 {
 	private String materialName;
 	private String color;
 	private String reserves;
+	
+	private String materialNames_JA_Str;
+	
 	private String density;
 	private String scale;
 	
@@ -86,6 +93,14 @@ public class materialAction
 	{
 		this.materialService = materialService;
 	}
+	public String getMaterialNames_JA_Str() 
+	{
+		return materialNames_JA_Str;
+	}
+	public void setMaterialNames_JA_Str(String materialNames_JA_Str) 
+	{
+		this.materialNames_JA_Str = materialNames_JA_Str;
+	}
 	@Action(value="addMaterial", results=@Result(location="/success.jsp"))
 	public String addMaterial()
 	{
@@ -99,16 +114,20 @@ public class materialAction
 		materialService.addMaterial(m);
 		return "success";
 	}
-	@Action(value="findMaterialNames", results={@Result(name="success",location="/success.jsp",type="json",params={"noCache","true","contentType","text/html"}),@Result(name="error",location="/error.jsp")})
+	//往JSP传JSON的ACTION不用配置视图资源，传参配	"root","parameter name"参数要有get和set方法
+	@Action(
+			value="findMaterialNames", 
+			results=
+		{
+			@Result(type="json",params={"noCache","true","contentType","text/html","excludeNullProperties","true","root","materialNames_JA_Str"}),
+		}
+			)
 	public String findMaterialNames()
 	{
 		System.out.println("Finding all the materials... ");
 		List<String> materialNamesList = materialService.findMaterialNames();
-		//_JA means JSON ARRAY
-		String materialNames_JA_Str = jsonConvert.List_To_JSONArray(materialNamesList);
+		materialNames_JA_Str = jsonConvert.List_To_JSONArray(materialNamesList);
 		System.out.println("materialNames_JA_Str: "+materialNames_JA_Str);
-		//ActionContext.getContext().getSession().put("m",materialNames_JA_Str);
-		//ServletActionContext.getRequest().setAttribute("m",materialNames_JA_Str);
 		return "success";
 	}
 	public String modifyMaterial()
