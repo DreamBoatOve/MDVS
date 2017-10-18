@@ -37,46 +37,56 @@ public class material
 	@JoinColumn(name="test_id",referencedColumnName="test_id",unique=true)
 	private test test;
 
-	public Integer getId() {
+	public Integer getId() 
+	{
 		return id;
 	}
-
-	public void setId(Integer id) {
+	public void setId(Integer id) 
+	{
 		this.id = id;
 	}
-
-	public String getMaterialName() {
+	public String getMaterialName()
+	{
 		return materialName;
 	}
-
-	public void setMaterialName(String materialName) {
+	public void setMaterialName(String materialName) 
+	{
 		this.materialName = materialName;
 	}
-	public String getMaterialColor() {
+	public String getMaterialColor() 
+	{
 		return materialColor;
 	}
-	public void setMaterialColor(String materialColor) {
+	public void setMaterialColor(String materialColor) 
+	{
 		this.materialColor = materialColor;
 	}
-	public String getMaterialDensity() {
+	public String getMaterialDensity() 
+	{
 		return materialDensity;
 	}
-	public void setMaterialDensity(String materialDensity) {
+	public void setMaterialDensity(String materialDensity) 
+	{
 		this.materialDensity = materialDensity;
 	}
-	public String getMaterialReserves() {
+	public String getMaterialReserves() 
+	{
 		return materialReserves;
 	}
-	public void setMaterialReserves(String materialReserves) {
+	public void setMaterialReserves(String materialReserves) 
+	{
 		this.materialReserves = materialReserves;
 	}
-	public String getMaterialScale() {
+	public String getMaterialScale() 
+	{
 		return materialScale;
 	}
-	public void setMaterialScale(String materialScale) {
+	public void setMaterialScale(String materialScale) 
+	{
 		this.materialScale = materialScale;
 	}
-	public test getTest() {
+	public test getTest() 
+	{
 		return test;
 	}
 	public void setTest(test test)

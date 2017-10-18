@@ -11,21 +11,19 @@
 		<script type="text/javascript">
 			function check()
 			{
-				alert("invoke check function");
-				$("#showArea").hide();
+				//alert("invoke check function");
+				$("#showMaterials").hide();
 				//指定向JSONExample发送请求，将id为form2的表单所包含的表单控件转换为请求参数
 				$.post("findMaterialNames",$("form2").serializeArray(),
-						//指定回调函数
-						//data代表服务器响应，此处只是把服务器响应显示出来
-/* 						function(data,s)
-						{
-							alert(data);
-							alert(s);
-						}, */
+						/*
+						* 指定回调函数
+						* data代表服务器响应，此处只是把服务器响应显示出来
+						* statusText响应状态success/error
+						*/
 						function(data,statusText)
 						{
-							alert(data);
-							alert(statusText);
+							//alert(data);
+							//alert(statusText);
 							var jo = eval('('+data+')');
 							for(var d in jo)
 							{
@@ -33,16 +31,6 @@
 							}
 							$("#showArea").show(600);
 						},
-/* 						function(data,statusText)
-						{
-							alert(data);
-							alert(statusText);
-							for(var d in data)
-							{
-								$("#showArea").append(d+"-->"+data[d]+"<br />");
-							}
-							$("#showArea").show(600);
-						}, */
 						"json"
 					  );
 			}
@@ -73,7 +61,7 @@
 		</form><hr />
 		<s:form id="form2" action="../material/findMaterialNames.action" method="post">
 			<input type="button" value="Show materials" onclick="check();" />
-			<div id="showArea"></div>
+			<div id="showMaterials"></div>
 		</s:form>
 	</body>
 </html>
