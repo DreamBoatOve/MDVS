@@ -6,7 +6,7 @@ import beans.material.service.test.test;
 
 public class testDao implements ITestDao 
 {
-	private SessionFactory sessionFactory;
+/*	private SessionFactory sessionFactory;
 	
 	public SessionFactory getSessionFactory() 
 	{
@@ -16,16 +16,16 @@ public class testDao implements ITestDao
 	{
 		this.sessionFactory = sessionFactory;
 	}
-	
+*/	
 	@Override
 	public void addTest(test test) 
 	{
-		sessionFactory.getCurrentSession().save(test);
+		//sessionFactory.getCurrentSession().save(test);
 	}
 	@Override
 	public void remove(test test) 
 	{
-		sessionFactory.getCurrentSession().remove(test);
+		//sessionFactory.getCurrentSession().remove(test);
 	}
 	@Override
 	public void modifyTest(test test) 

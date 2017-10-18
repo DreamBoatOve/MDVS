@@ -24,11 +24,6 @@ public class testService implements ITestService
 		testDao.addTest(test);
 	}
 	@Override
-	public void removeTest(test test) 
-	{
-		testDao.remove(test);
-	}
-	@Override
 	public void modifyTest(test test) 
 	{
 		testDao.modifyTest(test);
@@ -56,5 +51,10 @@ public class testService implements ITestService
 	{
 		testDao.findTestByRowAndCol(row,col);
 		return null;
+	}
+	@Override
+	public void removeTestByRow(test test) {
+		// TODO Auto-generated method stub
+		
 	}
 }
