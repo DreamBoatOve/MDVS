@@ -1,9 +1,13 @@
 package beans.material.service.test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,56 +42,46 @@ public class test
 	@JoinColumn(name="wear",referencedColumnName="wear_id",unique=true)
 	private Integer wear;
 	
-	//high-thoughput
-	@OneToOne(targetEntity=highThroughput.class)
-	@JoinColumn(name="hiighThroughput",referencedColumnName="high_id",unique=true)
-	private highThroughput highThroughput;
+	//1-N high-thoughput
+	@OneToMany(targetEntity=highThroughput.class)
+	@JoinColumn(name="test_id")
+	private Set<highThroughput> highThroughput_Set = new HashSet<highThroughput>();
 
 	public Integer getTest_id() 
 	{
 		return test_id;
 	}
-
 	public void setTest_id(Integer test_id) 
 	{
 		this.test_id = test_id;
 	}
-
 	public fatigue getFatigue() 
 	{
 		return fatigue;
 	}
-
 	public void setFatigue(fatigue fatigue) 
 	{
 		this.fatigue = fatigue;
 	}
-
 	public fracture getFracture() {
 		return fracture;
 	}
-
 	public void setFracture(fracture fracture) {
 		this.fracture = fracture;
 	}
-
 	public Integer getWear() {
 		return wear;
 	}
-
 	public void setWear(Integer wear) {
 		this.wear = wear;
 	}
-
-	public highThroughput getHighThroughput() {
-		return highThroughput;
+	public Set<highThroughput> getHighThroughput_Set() {
+		return highThroughput_Set;
 	}
-
-	public void setHighThroughput(highThroughput highThroughput) 
-	{
-		this.highThroughput = highThroughput;
+	public void setHighThroughput_Set(Set<highThroughput> highThroughput_Set) {
+		this.highThroughput_Set = highThroughput_Set;
 	}
-
+	
 	public test() 
 	{
 		super();

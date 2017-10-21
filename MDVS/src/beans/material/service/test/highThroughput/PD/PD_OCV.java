@@ -1,4 +1,4 @@
-package beans.material.service.test.highThroughput.EIS;
+package beans.material.service.test.highThroughput.PD;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +9,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
-public class EIS_OCV 
+public class PD_OCV 
 {
 	@Id
-	@GenericGenerator(name="EIS_OCV_Id_Generator",strategy="native")
-	@GeneratedValue(generator="EIS_OCV_Id_Generator")
+	@GenericGenerator(name="PD_OCV_Id_Generator",strategy="native")
+	@GeneratedValue(generator="PD_OCV_Id_Generator")
 	private Integer id;
-	private double T;
+	private double Time;
 	private double Vf;
 	private double Vm;
 	private double Ach;
@@ -26,11 +26,11 @@ public class EIS_OCV
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public double getT() {
-		return T;
+	public double getTime() {
+		return Time;
 	}
-	public void setT(double t) {
-		T = t;
+	public void setTime(double time) {
+		Time = time;
 	}
 	public double getVf() {
 		return Vf;
@@ -51,7 +51,7 @@ public class EIS_OCV
 		Ach = ach;
 	}
 	
-	public EIS_OCV() 
+	public PD_OCV() 
 	{
 		super();
 	}

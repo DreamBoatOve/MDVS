@@ -1,13 +1,91 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="utf-8">
-<script type="text/javascript"></script>
-<script type="text/javascript">
-</script>
-<style>
-</style>
-</head>
-<body>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>
+		<script type="text/javascript">
+			function addOption()
+			{
+				var row = areaForm.row.value;
+				var col = areaForm.col.value;
+				alert(row+"---"+col);
+				for (var i = 0; i < row; i++)
+				{
+					alert(i);
+					$("#selectedRow").append("<option value = "+(i+1)+">"+(i+1)+"<option>");
+				}
+				for(var i = 0; i < col; i++)
+				{
+					alert(i);
+					$("#selectedCol").append("<option value = "+(i+1)+">"+(i+1)+"<option>");
+				}
+			}
+		</script>
+		<style>
+		</style>
+	</head>
+	<body>
+		<form action="" method="post">
+			<h1>添加材料</h1>
+			材料名称：
+				<input type="text" name="materialName" />
+				<br />
+			材料颜色：
+				<input type="radio" name="materialColor" value="b" />黑色金属
+				<input type="radio" name="materialColor" value="c" />有色金属
+				<br />
+			材料储量：
+				<input type="radio" name="materialReserves" value="c" />常量元素
+				<input type="radio" name="materialReserves" value="r" />微量元素
+				<br />
+			材料密度：
+				<input type="radio" name="materialDensity" value="l" />轻金属
+				<input type="radio" name="materialDensity" value="h" />重金属
+				<br />			
+			实验区域范围：
+				<input type="radio" name="materialScale" value="c" />常规区域
+				<input type="radio" name="materialScale" value="m" />微区
+				<br />
+			<input type="submit" name="提交" /> <input type="reset" name="重置" />
+			<br />
+		</form>
+		<hr>
+
+		<h2>添加材料—服役</h2>
+		<form action="" method="post">
+			服役类型：
+				<input type="radio" name="serviceType" value="environment" />环境
+				<input type="radio" name="serviceType" value="test" />测试
+				<br />
+			<input type="submit" name="提交" /> <input type="reset" name="重置" />
+		</form>
+		<br>
+		<hr>
+
+		<h3>添加材料—服役—测试</h3>
+		<form action="" method="post">
+			测试类型：			
+				<input type="checkbox" name="fatigue" />疲劳
+				<input type="checkbox" name="fracture" />断裂
+				<input type="checkbox" name="wear" />磨损
+				<input type="checkbox" name="corrsion" />腐蚀（高通量组合样品）
+				<br>
+			<input type="submit" name="提交" /> <input type="reset" name="重置" />
+		</form>
+		<br><hr>
+
+		<h4>添加材料—服役—测试—高通量组合样品</h4>
+		<form action="" method="post" name="areaForm">
+			您的实验区域被分为：<input id="row" type="number" name="row" />行，<input id="col" type="number" name="col">列。<input type="button" value="确定" onclick="addOption()"><br> 
+			您当前的实验区域所在行：
+				<select id="selectedRow"></select>
+			实验区域所在列：
+				<select id="selectedCol"></select>
+				<br>
+			上传EIS实验文件：
+				<input type="file" name="" /><br>				
+			上传PD实验文件：
+				<input type="file" name="" />
+		</form>
+	</body>
 </html>

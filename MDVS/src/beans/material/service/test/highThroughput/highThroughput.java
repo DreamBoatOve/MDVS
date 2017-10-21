@@ -1,8 +1,13 @@
 package beans.material.service.test.highThroughput;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -22,8 +27,13 @@ public class highThroughput
 	private Integer row;
 	private Integer col;
 	
-	private EIS eis;
-	private PD pd;
+	@OneToMany(targetEntity = EIS.class)
+	@JoinColumn(name="high_id")
+	private Set<EIS> EIS_Set = new HashSet<EIS>();
+	
+	@OneToMany(targetEntity = PD.class)
+	@JoinColumn(name="high_id")
+	private Set<PD> PD_Set = new HashSet<PD>();
 	
 	public Integer getHigh_id() 
 	{
@@ -48,6 +58,18 @@ public class highThroughput
 	public void setCol(Integer col) 
 	{
 		this.col = col;
+	}
+	public Set<EIS> getEIS_Set() {
+		return EIS_Set;
+	}
+	public void setEIS_Set(Set<EIS> eIS_Set) {
+		EIS_Set = eIS_Set;
+	}
+	public Set<PD> getPD_Set() {
+		return PD_Set;
+	}
+	public void setPD_Set(Set<PD> pD_Set) {
+		PD_Set = pD_Set;
 	}
 	
 	public highThroughput() 
