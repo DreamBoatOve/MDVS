@@ -8,15 +8,12 @@
 			{
 				var row = areaForm.row.value;
 				var col = areaForm.col.value;
-				alert(row+"---"+col);
 				for (var i = 0; i < row; i++)
-				{
-					alert(i);
+				{					
 					$("#selectedRow").append("<option value = "+(i+1)+">"+(i+1)+"<option>");
 				}
 				for(var i = 0; i < col; i++)
 				{
-					alert(i);
 					$("#selectedCol").append("<option value = "+(i+1)+">"+(i+1)+"<option>");
 				}
 			}

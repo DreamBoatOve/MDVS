@@ -1,5 +1,4 @@
-尝试SSH多表
-更改mysql存储位置
+数据日期格式的转换
 mysql一条记录中存储多张图片
 搞清struts2
 --------------------------------------
@@ -8,8 +7,6 @@ mysql一条记录中存储多张图片
 ----------------------------------------
 drop database if exists mdvs_test;
 create database mdvs_test;
-use mdvs_test;
-
 insert into a(a1,a2,a3) values(11,12,13);
 insert into a(a1,a2,a3) values(21,22,23);
 insert into b(b1,b2,b3) values(11,12,13);
