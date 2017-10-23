@@ -2,14 +2,62 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>		
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script type="text/javascript">
+			function primaryClassify()
+			{
+				var first = document.getElementById("primaryClassification");
+				var second = document.getElementById("secondaryClassification");
+				second.options.length = 0;
+				second.options.add(new Option("二级分类","null"));
+				if (first.selectedIndex == 0)
+				{
+					alert("请选择-一级分类-标签以下的标签");
+				}
+				else if(first.selectedIndex == 1)
+				{
+					second.options.add(new Option("Unknow_4","Unknow_4"));
+				}
+				else if(first.selectedIndex == 2)
+				{
+					second.options.add(new Option("Unknow_2","Unknow_2"));
+				}
+				else if(first.selectedIndex == 3)
+				{
+					second.options.add(new Option("Unknow_3","Unknow_3"));
+				}
+				else if (first.selectedIndex == 4)
+				{
+					second.options.add(new Option("环境","environment"));
+					second.options.add(new Option("服役","service"));	
+				}
+			}
+			function secondaryClassify()
+			{
+				var second = document.getElementById("secondaryClassification");
+				var third = document.getElementById("thirdClassification");		
+				thirdClassification.options.length = 0;
+				thirdClassification.options.add(new Option("三级分类","null"));			
+				if(second.selectedIndex == 0)
+				{
+					alert("请选择-二级分类-标签以下的标签");
+				}
+				else if (second.selectedIndex == 2)
+				{
+					third.options.add(new Option("疲劳","fatigue"));
+					third.options.add(new Option("断裂","fracture"));
+					third.options.add(new Option("磨损","wear"));
+					third.options.add(new Option("高通量组合样品实验","highThroughput"));
+				}
+			}			
 		</script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	</head>
 	<body>
 		<form action="" method="post">
 			<h1>查询材料</h1>
-			材料属性：
+			根据材料属性：
 				<select name="color">
 					<option value="b" selected="selected">黑色金属</option>
 					<option value="c">有色金属</option>
@@ -26,10 +74,28 @@
 					<option value="c">常规区域</option>
 					<option value="m" selected="selected">微区</option>
 				</select>
+			<input type="submit" name="">
 		</form>
-		<br><hr>
+		<br>
+		符合筛选条件的材料有：
+			<select id="qulifiedMaterials"></select>
+		<hr>
+
 		<form>
-			<h2></h2>
+			<h2>选择您希望查询的模块</h2>
+			<select id="primaryClassification" onchange="primaryClassify()">
+				<option value="null" selected="selected">一级分类</option>				
+				<option value="components">材料成分</option>
+				<option value="process">材料加工</option>
+				<option value="structure">材料结构</option>	
+				<option value="service">材料服役</option>			
+			</select>
+			<select id="secondaryClassification" onchange="secondaryClassify()">
+				<option selected="selected">二级分类</option>				
+			</select>
+			<select id="thirdClassification" onchange="thirdClassify()">
+				<option selected="selected">三级分类</option>
+			</select>
 		</form>
 	</body>
 </html>	
