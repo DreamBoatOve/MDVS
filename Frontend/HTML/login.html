@@ -7,6 +7,7 @@
 		<title>MDVS后台登录</title>
 		<link href="../CSS/loginCSS/bootstrap.min.css" rel="stylesheet">
 		<link href="../CSS/loginCSS/signin.css" rel="stylesheet">
+		<script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>
 		<script type="text/javascript">
 			function validateUser()
 			{
@@ -17,8 +18,14 @@
 				if ( (name.value == "tom") && (password.value == "123") )
 				{
 					alert('infor is right');
+					$(location).attr('href','index_bootstrap.html');
 					//window.location.href = "index.html";
-					window.navigate("index.html");
+					//window.location.href = "/index.html";
+					//window.navigate("index.html");										
+					//window.location.reload("index.html");
+					//top.window.location = "index.html";
+					//top.window.location.href = "index.html";
+					//top.location.href = "index.html";
 					alert('did not jump');
 				}
 			}
@@ -33,7 +40,8 @@
 		<form class="form-signin" role="form">
 			<input id="name" type="text" class="form-control" placeholder="用户名" required autofocus />
 			<input id="password" type="password" class="form-control" placeholder="密码" required />
-			<button class="btn btn-lg btn-warning btn-block" type="submit" onclick="validateUser()">登录</button>
+			<!-- <button class="btn btn-lg btn-warning btn-block" type="submit" onclick="validateUser()">登录</button> -->
+			<input type="submit" name="" class="btn btn-lg btn-warning btn-block" onclick="validateUser()" value="登录" />
 			<label class="checkbox">
 				<input type="checkbox" value="remember-me"> 记住我
 			</label>
