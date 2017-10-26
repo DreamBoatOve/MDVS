@@ -1,13 +1,24 @@
 package service.material.service.test;
 
-import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import beans.material.service.test.test;
+import beans.material.service.test.fatigue.fatigue;
+import beans.material.service.test.fracture.fracture;
+import beans.material.service.test.highThroughput.highThroughput;
+import beans.material.service.test.wear.wear;
 import dao.material.service.test.ITestDao;
 
+@Service("testService")
 public class testService implements ITestService 
 {
-	private ITestDao testDao;
+	@Resource
+	private ITestDao testDao; 
 	
 	public ITestDao getTestDao() 
 	{
@@ -17,44 +28,46 @@ public class testService implements ITestService
 	{
 		this.testDao = testDao;
 	}
-	
+	@Transactional
 	@Override
 	public void addTest(test test) 
 	{
 		testDao.addTest(test);
 	}
+	@Transactional
+	@Override
+	public void removeTest(test test) 
+	{
+		testDao.removeTest(test);
+	}
+	@Transactional
 	@Override
 	public void modifyTest(test test) 
 	{
 		testDao.modifyTest(test);
 	}
+	@Transactional(readOnly=true)
 	@Override
-	public List<Integer> findTestSequences() 
+	public fatigue findTestFatigue(int id)
 	{
-		testDao.findTestSequences();
-		return null;
+		return testDao.findTestFatigue(id);
 	}
+	@Transactional(readOnly=true)
 	@Override
-	public List<Integer> findTestByRow(int row) 
+	public fracture findTestFracture(int id) 
 	{
-		testDao.findTestByRow(row);
-		return null;
+		return testDao.findTestFracture(id);
 	}
+	@Transactional(readOnly=true)
 	@Override
-	public List<Integer> findTestByCol(int col) 
+	public wear findTestWear(int id) 
 	{
-		testDao.findTestByRow(col);
-		return null;
+		return testDao.findTestWear(id);
 	}
+	@Transactional(readOnly=true)
 	@Override
-	public List<Integer> findTestByRowAndCol(int row, int col) 
+	public Set<highThroughput> findTesthighThroughputs(int id) 
 	{
-		testDao.findTestByRowAndCol(row,col);
-		return null;
-	}
-	@Override
-	public void removeTestByRow(test test) {
-		// TODO Auto-generated method stub
-		
+		return testDao.findTesthighThroughputs(id);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.material.material;
+import beans.material.service.service;
 import dao.material.IMaterialDao;
 
 @Service("materialService")
@@ -72,5 +73,11 @@ public class materialService implements IMaterialService
 	public List<String> findMaterialsByReserves(String materialReserves) 
 	{
 		return materialDao.findMaterialsByReserves(materialReserves);
+	}
+	@Transactional(readOnly=true)
+	@Override
+	public service findMaterialServiceById(int id) 
+	{
+		return materialDao.findMaterialServiceById(id);
 	}
 }

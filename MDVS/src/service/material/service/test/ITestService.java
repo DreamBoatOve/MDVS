@@ -1,17 +1,21 @@
 package service.material.service.test;
 
-import java.util.List;
+import java.util.Set;
 
 import beans.material.service.test.test;
+import beans.material.service.test.fatigue.fatigue;
+import beans.material.service.test.fracture.fracture;
+import beans.material.service.test.highThroughput.highThroughput;
+import beans.material.service.test.wear.wear;
 
 public interface ITestService 
 {
 	void addTest(test test);
-	void removeTestByRow(test test);
+	void removeTest(test test);
 	void modifyTest(test test);
 	
-	List<Integer> findTestSequences();
-	List<Integer> findTestByRow(int row);
-	List<Integer> findTestByCol(int col);
-	List<Integer> findTestByRowAndCol(int row, int col);
+	fatigue findTestFatigue(int id);
+	fracture findTestFracture(int id);
+	wear findTestWear(int id);
+	Set<highThroughput> findTesthighThroughputs(int id);
 }

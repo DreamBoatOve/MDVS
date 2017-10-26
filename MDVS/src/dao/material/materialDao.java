@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import beans.material.material;
+import beans.material.service.service;
 
 @Repository("materialDao")
 public class materialDao implements IMaterialDao 
@@ -67,5 +68,13 @@ public class materialDao implements IMaterialDao
 	{
 		String hql = "from material m where m.common_Rare = ?";
 		return sessionFactory.getCurrentSession().createQuery(hql).setString(0, materialReserves).list();
+	}
+	@Override
+	public service findMaterialServiceById(int id) 
+	{
+		String hql = "from material m where m.id = ?";
+		material m = (material) sessionFactory.getCurrentSession().createQuery(hql).setInteger(0, id).uniqueResult();
+		service service = (service) m.getService();
+		return service;
 	}
 }

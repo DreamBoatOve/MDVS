@@ -40,7 +40,7 @@ public class test
 	//wear
 	@OneToOne(targetEntity=wear.class)
 	@JoinColumn(name="wear",referencedColumnName="wear_id",unique=true)
-	private Integer wear;
+	private wear wear;
 	
 	//1-N high-thoughput
 	@OneToMany(targetEntity=highThroughput.class)
@@ -69,10 +69,12 @@ public class test
 	public void setFracture(fracture fracture) {
 		this.fracture = fracture;
 	}
-	public Integer getWear() {
+	public wear getWear() 
+	{
 		return wear;
 	}
-	public void setWear(Integer wear) {
+	public void setWear(wear wear) 
+	{
 		this.wear = wear;
 	}
 	public Set<highThroughput> getHighThroughput_Set() {

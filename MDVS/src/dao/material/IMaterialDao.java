@@ -3,6 +3,7 @@ package dao.material;
 import java.util.List;
 
 import beans.material.material;
+import beans.material.service.service;
 
 public interface IMaterialDao 
 {
@@ -16,4 +17,6 @@ public interface IMaterialDao
 	public List<String> findMaterialsByColor(String materialColor);
 	public List<String> findMaterialsByDensity(String materialDensity);
 	public List<String> findMaterialsByReserves(String materialReserves);
+	
+	service findMaterialServiceById(int id);
 }
