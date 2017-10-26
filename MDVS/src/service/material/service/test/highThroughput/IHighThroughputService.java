@@ -12,6 +12,6 @@ public interface IHighThroughputService
 	void removeHighThroughput(highThroughput h);
 	void modifyHighThroughput(highThroughput h);
 	
-	Set<EIS> findEISSet(int id);
-	Set<PD> findPDSet(int id);
+	EIS findEISSet(int id);
+	PD findPDSet(int id);
 }

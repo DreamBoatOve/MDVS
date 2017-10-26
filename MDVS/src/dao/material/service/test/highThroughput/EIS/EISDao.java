@@ -10,7 +10,7 @@ import beans.material.service.test.highThroughput.EIS.EIS;
 import beans.material.service.test.highThroughput.EIS.EIS_Bode_Nyquist;
 import beans.material.service.test.highThroughput.EIS.EIS_OCV;
 
-@Repository
+@Repository("EISDao")
 public class EISDao implements IEISDao 
 {
 	@Autowired

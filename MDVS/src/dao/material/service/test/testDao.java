@@ -12,7 +12,7 @@ import beans.material.service.test.fracture.fracture;
 import beans.material.service.test.highThroughput.highThroughput;
 import beans.material.service.test.wear.wear;
 
-@Repository("materialDao")
+@Repository("testDao")
 public class testDao implements ITestDao 
 {
 	@Autowired

@@ -1,7 +1,5 @@
 package dao.material.service.test.highThroughput;
 
-import java.util.Set;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,7 +8,7 @@ import beans.material.service.test.highThroughput.highThroughput;
 import beans.material.service.test.highThroughput.EIS.EIS;
 import beans.material.service.test.highThroughput.PD.PD;
 
-@Repository
+@Repository("highThroughputDao")
 public class highThroughputDao implements IHighThroughputDao 
 {
 	@Autowired
@@ -41,17 +39,17 @@ public class highThroughputDao implements IHighThroughputDao
 		sf.getCurrentSession().update(h);
 	}
 	@Override
-	public Set<EIS> findEISSet(int id) 
+	public EIS findEISSet(int id) 
 	{
 		String hql = "from highthroughput h where h.id = ?";
 		highThroughput h = (highThroughput) sf.getCurrentSession().createQuery(hql).setInteger(0, id).uniqueResult();
-		return h.getEIS_Set();
+		return h.getEis();
 	}
 	@Override
-	public Set<PD> findPDSet(int id) 
+	public PD findPDSet(int id) 
 	{
 		String hql = "from highthroughput h where h.id = ?";
 		highThroughput h = (highThroughput) sf.getCurrentSession().createQuery(hql).setInteger(0, id).uniqueResult();
-		return h.getPD_Set();
+		return h.getPd();
 	}
 }

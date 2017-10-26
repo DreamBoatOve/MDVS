@@ -1,11 +1,15 @@
 package dao.material.service.test.highThroughput.EIS;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import beans.material.service.test.highThroughput.EIS.EIS_Setting;
 
+@Repository("EIS_SettingDao")
 public class EIS_SettingDao implements IEIS_SettingDao 
 {
+	@Autowired
 	private SessionFactory sf;
 	
 	public SessionFactory getSf() 

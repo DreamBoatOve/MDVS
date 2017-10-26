@@ -47,13 +47,13 @@ public class highThroughputService implements IHighThroughputService
 	}
 	@Transactional(readOnly=true)
 	@Override
-	public Set<EIS> findEISSet(int id) 
+	public EIS findEISSet(int id) 
 	{
 		return highThroughputDao.findEISSet(id);
 	}
 	@Transactional(readOnly=true)
 	@Override
-	public Set<PD> findPDSet(int id) 
+	public PD findPDSet(int id) 
 	{
 		return highThroughputDao.findPDSet(id);
 	}
