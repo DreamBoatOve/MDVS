@@ -3,8 +3,11 @@ package Utils.service.test.highThroughput.DTA;
 public interface IDTAParser 
 {
 	//获取文件的文件名
+	void getFileName();
 	//获取指定行的字符串
+	void getStringByRow(int row);
 	//按照Tab键截取字符串，并获取指定指定位置的字符串
+	void getStringByPos(int num);
 	/*日期字符串转MYSQL的日期格式
 	 * MYSQL存储日期的数据类型有三种：Date、Datetime、Timestamp
 	 * 	Date数据类型：
@@ -14,6 +17,9 @@ public interface IDTAParser
 	 * 	Timestamp类型：
 	 * 		也是存储既有日期又有时间的数据。存储和显示的格式跟Datetime一样。支持的时间范围是“1970-01-01 00:00:01”到“2038-01-19 03:14:07”
 	 * */
+	void javaDateToMySQLDate();
+	void javaDateToMySQLDateTime();
+	void javaDateToMySQLTimestamp();
 	//
 	//
 }

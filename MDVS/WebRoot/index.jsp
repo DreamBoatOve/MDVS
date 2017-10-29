@@ -6,8 +6,9 @@
   </head>
   <body>
   	<hr>
-	  	<a href="../material/material.jsp">Original Add Materials</a><br>
-	  	<a href="../material/material_1.jsp">New Add Materials</a>
+	  	<a href="material/material.jsp">Original Add Materials</a><br>
+	  	<a href="material/material_1.jsp">New Add Materials</a>
+	  	<a href="DTA.jsp">New Add Materials</a>
   	<hr>
 	<form action="register.action" method="post">
 		Name:<input type="text" name="name" /><br>
