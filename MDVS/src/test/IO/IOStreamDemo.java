@@ -56,7 +56,7 @@ public class IOStreamDemo
 					out1.println("Line " + li.getLineNumber() + s);
 				}
 				// finalize() not reliable!
-				out1.close(); 
+				out1.close();
 			}
 			catch(EOFException e) 
 			{
