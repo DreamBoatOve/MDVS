@@ -15,6 +15,7 @@ public class EIS_OCV
 	@GenericGenerator(name="EIS_OCV_Id_Generator",strategy="native")
 	@GeneratedValue(generator="EIS_OCV_Id_Generator")
 	private Integer id;
+	private Integer originalID;
 	private double T;
 	private double Vf;
 	private double Vm;
@@ -25,6 +26,12 @@ public class EIS_OCV
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getOriginalID() {
+		return originalID;
+	}
+	public void setOriginalID(Integer originalID) {
+		this.originalID = originalID;
 	}
 	public double getT() {
 		return T;
@@ -54,5 +61,10 @@ public class EIS_OCV
 	public EIS_OCV() 
 	{
 		super();
+	}
+	@Override
+	public String toString() 
+	{
+		return "EIS_OCV [originalID=" + originalID + ", T=" + T + ", Vf=" + Vf + ", Vm=" + Vm + ", Ach=" + Ach + "]";
 	}
 }

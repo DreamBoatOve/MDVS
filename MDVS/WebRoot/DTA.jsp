@@ -6,12 +6,17 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form action="">
+		<form action="highThroughput/restoreFile.action" method="post" enctype="multipart/form-data">
 			<h1>添加材料-服役-测试-高通量组合实验</h1>
-				上传EIS实验文件：
-					<input type="file" name="" /><br>				
-				上传PD实验文件：
-					<input type="file" name="" />
-		</form>
+				实验样品被划分为：
+				<input type="number" name="row" />行，<input type="number" name="column" />列
+				<input type="submit">
+		</form><br>
+		<form action="" method="post" enctype="multipart/form-data">
+			上传EIS实验文件：<input type="file" name="EISFile" /><br>
+		</form><br>
+		<form action="" method="post" enctype="multipart/form-data">
+			上传PD实验文件：<input type="file" name="PDFile" /><br>
+		</form><br>
 	</body>
 </html>

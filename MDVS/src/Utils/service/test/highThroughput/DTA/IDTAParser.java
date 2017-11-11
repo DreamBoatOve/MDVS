@@ -20,6 +20,7 @@ public interface IDTAParser
 	void javaDateToMySQLDate();
 	void javaDateToMySQLDateTime();
 	void javaDateToMySQLTimestamp();
-	//
+	//获取文件
+	
 	//
 }

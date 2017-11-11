@@ -1,5 +1,6 @@
 package beans.material.service.test.highThroughput;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,6 +36,9 @@ public class highThroughput
 	@OneToOne(targetEntity = PD.class)
 	@JoinColumn(name="high_id")
 	private PD pd;
+	
+	private Date experimentTime;
+	private String operatorName;
 	
 	public Integer getHigh_id() 
 	{
@@ -72,6 +76,18 @@ public class highThroughput
 	public void setPd(PD pd) {
 		this.pd = pd;
 	}
+	public Date getExperimentTime() {
+		return experimentTime;
+	}
+	public void setExperimentTime(Date experimentTime) {
+		this.experimentTime = experimentTime;
+	}
+	public String getOperatorName() {
+		return operatorName;
+	}
+	public void setOperatorName(String operatorName) {
+		this.operatorName = operatorName;
+	}
 	
 	public highThroughput() 
 	{
@@ -82,5 +98,22 @@ public class highThroughput
 		super();
 		this.row = row;
 		this.col = col;
+	}
+	public highThroughput(Integer row, Integer col, Date experimentTime, String operatorName) 
+	{
+		super();
+		this.row = row;
+		this.col = col;
+		this.experimentTime = experimentTime;
+		this.operatorName = operatorName;
+	}
+	public highThroughput(Integer row, Integer col, EIS eis, Date experimentTime, String operatorName) 
+	{
+		super();
+		this.row = row;
+		this.col = col;
+		this.eis = eis;
+		this.experimentTime = experimentTime;
+		this.operatorName = operatorName;
 	}
 }

@@ -5,36 +5,25 @@ public class DTAParser implements IDTAParser
 	@Override
 	public void getFileName() 
 	{
-		
 	}
 	@Override
-	public void getStringByRow(int row) {
-		// TODO Auto-generated method stub
-
+	public void getStringByRow(int row) 
+	{
 	}
-
 	@Override
-	public void getStringByPos(int num) {
-		// TODO Auto-generated method stub
-
+	public void getStringByPos(int num) 
+	{
 	}
-
 	@Override
-	public void javaDateToMySQLDate() {
-		// TODO Auto-generated method stub
-
+	public void javaDateToMySQLDate() 
+	{
 	}
-
 	@Override
-	public void javaDateToMySQLDateTime() {
-		// TODO Auto-generated method stub
-
+	public void javaDateToMySQLDateTime() 
+	{
 	}
-
 	@Override
-	public void javaDateToMySQLTimestamp() {
-		// TODO Auto-generated method stub
-
+	public void javaDateToMySQLTimestamp() 
+	{
 	}
-
 }

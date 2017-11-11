@@ -1,5 +1,7 @@
 package beans.material.service.test.highThroughput.EIS;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,15 +18,43 @@ public class EIS_Setting
 	@GeneratedValue(generator="EIS_Setting_Id_Generator")
 	private Integer id;
 	private String filaName;
+	private String Test_Identifier;
+	private Date experimentTime;
 	private double DC;
 	private double AC;
 	private double Initial_Freq;
 	private double Final_Freq;
 	private double Point_Decade;
 	private double Area;
+	private char ConditioningStatus;
 	private double Conditioning;
+	private char Init_DelayStatus;
 	private double Init_Delay;
 	
+	public String getTest_Identifier() {
+		return Test_Identifier;
+	}
+	public void setTest_Identifier(String test_Identifier) {
+		Test_Identifier = test_Identifier;
+	}
+	public Date getExperimentTime() {
+		return experimentTime;
+	}
+	public void setExperimentTime(Date experimentTime) {
+		this.experimentTime = experimentTime;
+	}
+	public char getConditioningStatus() {
+		return ConditioningStatus;
+	}
+	public void setConditioningStatus(char conditioningStatus) {
+		ConditioningStatus = conditioningStatus;
+	}
+	public char getInit_DelayStatus() {
+		return Init_DelayStatus;
+	}
+	public void setInit_DelayStatus(char init_DelayStatus) {
+		Init_DelayStatus = init_DelayStatus;
+	}
 	public Integer getId() {
 		return id;
 	}

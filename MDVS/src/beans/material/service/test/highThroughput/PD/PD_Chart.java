@@ -16,6 +16,7 @@ public class PD_Chart
 	@GeneratedValue(generator="PD_Chart_Id_Generator")
 	private Integer id;
 	
+	private Integer originalID;
 	private double Time;
 	private double Vf;
 	private double Im;
@@ -29,6 +30,12 @@ public class PD_Chart
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getOriginalID() {
+		return originalID;
+	}
+	public void setOriginalID(Integer originalID) {
+		this.originalID = originalID;
 	}
 	public double getTime() {
 		return Time;

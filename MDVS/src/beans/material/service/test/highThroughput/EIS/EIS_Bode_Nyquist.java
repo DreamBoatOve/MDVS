@@ -15,6 +15,7 @@ public class EIS_Bode_Nyquist
 	@GenericGenerator(name="EIS_Bode_Nyquist_Id_Generator",strategy="native")
 	@GeneratedValue(generator="EIS_Bode_Nyquist_Id_Generator")
 	private Integer id;
+	private Integer original_ID;
 	private double T;
 	private double Freq;
 	private double Zreal;
@@ -28,6 +29,12 @@ public class EIS_Bode_Nyquist
 	
 	public Integer getId() {
 		return id;
+	}
+	public Integer getOriginal_ID() {
+		return original_ID;
+	}
+	public void setOriginal_ID(Integer original_ID) {
+		this.original_ID = original_ID;
 	}
 	public void setId(Integer id) {
 		this.id = id;

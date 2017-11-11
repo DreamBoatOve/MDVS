@@ -25,7 +25,7 @@ public class EIS
 	@OneToOne(targetEntity=EIS_Setting.class)
 	@JoinColumn(name="EIS_id")
 	//@JoinColumn(name="EIS_Setting",referencedColumnName="id")
-	private Integer EIS_Setting;
+	private EIS_Setting EIS_Setting;
 	
 	@OneToMany(targetEntity=EIS_OCV.class)
 	@JoinColumn(name="EIS_id")
@@ -41,10 +41,10 @@ public class EIS
 	public void setEIS_id(Integer eIS_id) {
 		EIS_id = eIS_id;
 	}
-	public Integer getEIS_Setting() {
+	public EIS_Setting getEIS_Setting() {
 		return EIS_Setting;
 	}
-	public void setEIS_Setting(Integer eIS_Setting) {
+	public void setEIS_Setting(EIS_Setting eIS_Setting) {
 		EIS_Setting = eIS_Setting;
 	}
 	public Set<EIS_OCV> getEIS_OCV_Set() {

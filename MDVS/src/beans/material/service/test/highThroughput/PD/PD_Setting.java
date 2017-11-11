@@ -1,5 +1,7 @@
 package beans.material.service.test.highThroughput.PD;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +18,8 @@ public class PD_Setting
 	@GeneratedValue(generator="PD_Setting_Id_Generator")
 	private Integer id;
 	
+	private String Test_Identifier;
+	private Date experimentTime;
 	private String PD_fileName;
 	private double InitialE;
 	private double FinalE;
@@ -25,8 +29,22 @@ public class PD_Setting
 	private double Density;
 	private double Equiv;
 	private double Conditioning;
+	private char ConditioningStatus;
 	private double InitDelay;
+	private char InitDelayStatus;
 	
+	public char getConditioningStatus() {
+		return ConditioningStatus;
+	}
+	public void setConditioningStatus(char conditioningStatus) {
+		ConditioningStatus = conditioningStatus;
+	}
+	public char getInitDelayStatus() {
+		return InitDelayStatus;
+	}
+	public void setInitDelayStatus(char initDelayStatus) {
+		InitDelayStatus = initDelayStatus;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -38,6 +56,18 @@ public class PD_Setting
 	}
 	public void setPD_fileName(String pD_fileName) {
 		PD_fileName = pD_fileName;
+	}
+	public String getTest_Identifier() {
+		return Test_Identifier;
+	}
+	public void setTest_Identifier(String test_Identifier) {
+		Test_Identifier = test_Identifier;
+	}
+	public Date getExperimentTime() {
+		return experimentTime;
+	}
+	public void setExperimentTime(Date experimentTime) {
+		this.experimentTime = experimentTime;
 	}
 	public double getInitialE() {
 		return InitialE;

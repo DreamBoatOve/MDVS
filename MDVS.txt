@@ -2,6 +2,26 @@
 mysql一条记录中存储多张图片
 搞清struts2
 --------------------------------------
+File file = new File("E:" + File.separator + "hello.txt");
+BufferedReader in = new BufferedReader(new FileReader(“File Path”));
+
+FileOutputStream f = new FileOutputStream("test.zip");
+CheckedOutputStream csum = new CheckedOutputStream(f, new Adler32());
+ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(csum));
+
+DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("file path")));
+
+StringBufferInputStream in2 = new StringBufferInputStream(new String());
+
+LineNumberInputStream li = new LineNumberInputStream(new StringBufferInputStream("file path"));
+
+PrintStream out1 = new PrintStream(new BufferedOutputStream(new FileOutputStream("IODemo.out")));
+
+DataOutputStream out2 =
+new DataOutputStream(
+new BufferedOutputStream(
+new FileOutputStream("Data.txt")));
+--------------------------------------
 //查询要模糊匹配
 @genericgenerator strategy=native
 ----------------------------------------

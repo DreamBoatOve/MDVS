@@ -15,6 +15,7 @@ public class PD_OCV
 	@GenericGenerator(name="PD_OCV_Id_Generator",strategy="native")
 	@GeneratedValue(generator="PD_OCV_Id_Generator")
 	private Integer id;
+	private Integer originalID;
 	private double Time;
 	private double Vf;
 	private double Vm;
@@ -25,6 +26,12 @@ public class PD_OCV
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getOriginalID() {
+		return originalID;
+	}
+	public void setOriginalID(Integer originalID) {
+		this.originalID = originalID;
 	}
 	public double getTime() {
 		return Time;
