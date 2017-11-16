@@ -18,11 +18,11 @@ import beans.material.service.test.highThroughput.PD.PD_Setting;
 
 public class PDParser implements IPDParser 
 {
+	private File PDFile;
 	@Override
-	public PD_Setting getPD_Setting(File PDFile) 
+	public PD_Setting getPD_Setting() 
 	{
 		PD_Setting pd_Setting = new PD_Setting();
-		pd_Setting.setPD_fileName(PDFile.getName());
 		
 		DataInputStream dis = null;
 		try 
@@ -39,7 +39,6 @@ public class PDParser implements IPDParser
 				if(count == 3)
 				{
 					pd_Setting.setTest_Identifier(ss[2]);
-					System.out.println(pd_Setting.getTest_Identifier());
 				}
 				else if((count == 4) || (count == 5))
 				{
@@ -49,7 +48,6 @@ public class PDParser implements IPDParser
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd h:mm:ss");
 						Date d = sdf.parse(date[0]+" "+date[1]);
 						pd_Setting.setExperimentTime(d);
-						System.out.println(pd_Setting.getExperimentTime());
 					}
 				}
 				else if(count == 9)
@@ -84,13 +82,11 @@ public class PDParser implements IPDParser
 				{
 					pd_Setting.setConditioningStatus(ss[2].toCharArray()[0]);
 					pd_Setting.setConditioning(Double.valueOf(ss[3]));
-					System.out.println(pd_Setting.getConditioningStatus()+"---"+pd_Setting.getConditioning());
 				}
 				else if(count == 17)
 				{
 					pd_Setting.setInitDelayStatus(ss[2].toCharArray()[0]);
 					pd_Setting.setInitDelay(Double.valueOf(ss[3]));
-					System.out.println(pd_Setting.getInitDelayStatus()+"---"+pd_Setting.getInitDelay());
 				}
 				else if(count > 20)
 				{
@@ -118,7 +114,7 @@ public class PDParser implements IPDParser
 		return pd_Setting;
 	}
 	@Override
-	public Set<PD_OCV> getPD_OcvSet(File PDFile) 
+	public Set<PD_OCV> getPD_OcvSet() 
 	{
 		Set<PD_OCV> set = new HashSet<PD_OCV>();
 		DataInputStream dis = null;
@@ -139,15 +135,10 @@ public class PDParser implements IPDParser
 					}
 					PD_OCV ocv = new PD_OCV();
 					ocv.setOriginalID(Integer.valueOf(ss[1]));
-					//System.out.println(ocv.getOriginalID());
 					ocv.setTime(Double.valueOf(ss[2]));
-					//System.out.println(ocv.getTime());
 					ocv.setVf(Double.valueOf(ss[3]));
-					//System.out.println(ocv.getVf());
 					ocv.setVm(Double.valueOf(ss[4]));
-					//System.out.println(ocv.getVm());
 					ocv.setAch(Double.valueOf(ss[5]));
-					//System.out.println(ocv.getAch());
 					set.add(ocv);
 				}
 				count++;
@@ -170,7 +161,7 @@ public class PDParser implements IPDParser
 		return set;
 	}
 	@Override
-	public Set<PD_Chart> getPD_ChartSet(File PDFile) 
+	public Set<PD_Chart> getPD_ChartSet() 
 	{
 		Set<PD_Chart> chart = new HashSet<PD_Chart>();
 		DataInputStream dis = null;
@@ -195,21 +186,13 @@ public class PDParser implements IPDParser
 						{
 							PD_Chart c = new PD_Chart();
 							c.setOriginalID(Integer.valueOf(ss[1]));
-							System.out.println(c.getOriginalID());
 							c.setTime(Double.valueOf(ss[2]));
-							System.out.println(c.getTime());
 							c.setVf(Double.valueOf(ss[3]));
-							System.out.println(c.getVf());
 							c.setIm(Double.valueOf(ss[4]));
-							System.out.println(c.getIm());
 							c.setVu(Double.valueOf(ss[5]));
-							System.out.println(c.getVu());
 							c.setSig(Double.valueOf(ss[6]));
-							System.out.println(c.getSig());
 							c.setAch(Double.valueOf(ss[7]));
-							System.out.println(c.getAch());
 							c.setIERange(Double.valueOf(ss[8]));
-							System.out.println(c.getIERange());
 							chart.add(c);
 						}
 					}
@@ -231,5 +214,10 @@ public class PDParser implements IPDParser
 			{e.printStackTrace();}
 		}
 		return chart;
+	}
+	
+	public PDParser(File pDFile) 
+	{
+		PDFile = pDFile;
 	}
 }

@@ -12,6 +12,8 @@ public interface IEISService
 	void removeEIS(EIS eis);
 	void modifyEIS(EIS eis);
 	
+	//EIS getEISById(int EIS_ID);
+	
 	Set<EIS_OCV> findEIS_OCV_Set(int id);
 	Set<EIS_Bode_Nyquist> findEIS_Bode_Nyquist(int id);
 }

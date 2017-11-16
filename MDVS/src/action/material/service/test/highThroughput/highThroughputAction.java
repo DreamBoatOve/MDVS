@@ -1,17 +1,12 @@
 package action.material.service.test.highThroughput;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -30,10 +25,14 @@ import service.material.service.test.highThroughput.IHighThroughputService;
 @Scope("prototype")
 @Namespace("/highThroughput")
 @ParentPackage("struts-default")
-public class highThroughputAction 
+public class highThroughputAction
 {
 	private Integer row;
 	private Integer column;
+	
+	private Integer EIS_Id;
+	private Integer PD_Id;
+	
 	private File EISFile;
 	private File PDFile;
 	
@@ -83,8 +82,7 @@ public class highThroughputAction
 	}
 	
 	/*把获取到的实验文件输出到指定位置
-	 * 用于测试是否获取到文件
-	 */
+	 * 用于测试是否获取到文件*/
 	@Action(value="restoreFile",results=@Result(location="/success.jsp"))
 	public void restoreFile()
 	{
@@ -123,13 +121,11 @@ public class highThroughputAction
 			{e.printStackTrace();}
 		}
 	}
-	//解析EIS.DTA文件并将对应数据放入数据库
-	public void addEIS()
-	{
-		
-	}
-	//解析PD.DTA文件并将对应数据放入数据库
-	public void addPD()
+	/*根据EIS_Id和PD_Id获取到对应的EIS和PD实例对象，
+	 * 再结合row和column，生成HighThroughput，
+	 * 并将HighThroughput放入数据库*/
+	@Action(value="addHighThroughput")
+	public void addHighThroughput()
 	{
 		
 	}

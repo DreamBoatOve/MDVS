@@ -28,17 +28,18 @@ public class highThroughput
 	
 	private Integer row;
 	private Integer col;
-	
+	/*EIS已经提前入库，再此处，便不进行级联操作(cascade=CascadeType.ALL)*/
 	@OneToOne(targetEntity = EIS.class)
-	@JoinColumn(name="high_id")
+	@JoinColumn(name="EIS_Id",referencedColumnName="EIS_id",unique=true)
 	private EIS eis;
-	
+	/*PD已经提前入库，再此处，便不进行级联操作(cascade=CascadeType.ALL)*/
 	@OneToOne(targetEntity = PD.class)
-	@JoinColumn(name="high_id")
+	@JoinColumn(name="PD_id",referencedColumnName="PD_id",unique=true)
 	private PD pd;
 	
 	private Date experimentTime;
 	private String operatorName;
+	
 	
 	public Integer getHigh_id() 
 	{
@@ -64,56 +65,42 @@ public class highThroughput
 	{
 		this.col = col;
 	}
-	public EIS getEis() {
+	public EIS getEis() 
+	{
 		return eis;
 	}
-	public void setEis(EIS eis) {
+	public void setEis(EIS eis) 
+	{
 		this.eis = eis;
 	}
-	public PD getPd() {
+	public PD getPd() 
+	{
 		return pd;
 	}
-	public void setPd(PD pd) {
+	public void setPd(PD pd) 
+	{
 		this.pd = pd;
 	}
-	public Date getExperimentTime() {
+	public Date getExperimentTime() 
+	{
 		return experimentTime;
 	}
-	public void setExperimentTime(Date experimentTime) {
+	public void setExperimentTime(Date experimentTime) 
+	{
 		this.experimentTime = experimentTime;
 	}
-	public String getOperatorName() {
+	public String getOperatorName() 
+	{
 		return operatorName;
 	}
-	public void setOperatorName(String operatorName) {
+	public void setOperatorName(String operatorName) 
+	{
 		this.operatorName = operatorName;
 	}
+	
 	
 	public highThroughput() 
 	{
 		super();
-	}
-	public highThroughput(Integer row, Integer col) 
-	{
-		super();
-		this.row = row;
-		this.col = col;
-	}
-	public highThroughput(Integer row, Integer col, Date experimentTime, String operatorName) 
-	{
-		super();
-		this.row = row;
-		this.col = col;
-		this.experimentTime = experimentTime;
-		this.operatorName = operatorName;
-	}
-	public highThroughput(Integer row, Integer col, EIS eis, Date experimentTime, String operatorName) 
-	{
-		super();
-		this.row = row;
-		this.col = col;
-		this.eis = eis;
-		this.experimentTime = experimentTime;
-		this.operatorName = operatorName;
 	}
 }

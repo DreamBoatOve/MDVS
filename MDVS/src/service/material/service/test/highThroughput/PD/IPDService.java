@@ -1,5 +1,8 @@
 package service.material.service.test.highThroughput.PD;
 
-public interface IPDService {
+import beans.material.service.test.highThroughput.PD.PD;
 
+public interface IPDService 
+{
+	void addPD(PD pd);
 }

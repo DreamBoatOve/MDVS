@@ -2,9 +2,13 @@ package beans.material.service.test.highThroughput.EIS;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -17,7 +21,6 @@ public class EIS_Setting
 	@GenericGenerator(name="EIS_Setting_Id_Generator",strategy="native")
 	@GeneratedValue(generator="EIS_Setting_Id_Generator")
 	private Integer id;
-	private String filaName;
 	private String Test_Identifier;
 	private Date experimentTime;
 	private double DC;
@@ -60,12 +63,6 @@ public class EIS_Setting
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public String getFilaName() {
-		return filaName;
-	}
-	public void setFilaName(String filaName) {
-		this.filaName = filaName;
 	}
 	public double getDC() {
 		return DC;

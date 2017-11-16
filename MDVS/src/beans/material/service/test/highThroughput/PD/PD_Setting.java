@@ -19,8 +19,6 @@ public class PD_Setting
 	private Integer id;
 	
 	private String Test_Identifier;
-	private Date experimentTime;
-	private String PD_fileName;
 	private double InitialE;
 	private double FinalE;
 	private double ScanRate;
@@ -32,6 +30,7 @@ public class PD_Setting
 	private char ConditioningStatus;
 	private double InitDelay;
 	private char InitDelayStatus;
+	private Date experimentTime;
 	
 	public char getConditioningStatus() {
 		return ConditioningStatus;
@@ -50,12 +49,6 @@ public class PD_Setting
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public String getPD_fileName() {
-		return PD_fileName;
-	}
-	public void setPD_fileName(String pD_fileName) {
-		PD_fileName = pD_fileName;
 	}
 	public String getTest_Identifier() {
 		return Test_Identifier;

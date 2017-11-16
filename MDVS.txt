@@ -1,7 +1,68 @@
 数据日期格式的转换
 mysql一条记录中存储多张图片
 搞清struts2
+没必要保存EIS、PD实验文件的文件名，从缓存中获取的只是临时文件名
 --------------------------------------
+	none
+	save-update
+	delete
+	all
+	delete-orphan
+	all-delete-orphan
+SQL:
+	String sql = "select * from student";
+	String sql = "select * from student order by age desc"; //asc
+	List<Student> list = session.createSQLQuery(sql).addEntity(Student.class).list();
+
+	Paging Query:
+		String sql = "select * from student limit ?,?";
+		List<Student> list = session.createSQLQuery(sql).addEntity(Student.class).setInteger(0,(int) beginIndex(unincluded)).setInteger(1,(int) pageSize).list();
+
+	Fuzzy Query:
+		String sql = "select * from student where name like :sname";
+		List<Student> list = session.createSQLQuery(sql).addEntity(Student.class).setParameter("sname","%赵%").list();
+
+HQL:
+	String hql = "from Student";
+	String hql = "from Student order by age desc";
+	List<Student> list = session.createQuery(hql).list();
+
+	String hql = "from Student where age > ? and score < ?";
+	List<Student> list = session.createQuery(hql).setInteger(0,age).setDouble(0,score).list();
+	List<Student> list = session.createQuery(hql).setParameter(0,age).setParameter(1,(Double) score).list();
+
+	String hql = "from Student where age > :MyAge and score < :MyScore";
+	List<Student> list = session.createQuery(hql).setInteger("MyAge",age).setDouble("MyScore",score).list();
+	List<Student> list = session.createQuery(hql).setParameter("MyAge",age).setParameter("MyScore",(Double)score).list();
+
+	Paging Query:
+		String hql = "from Student";
+		//setFirstResult(int beginLineNumber) 设置查询开始的位置，不包括开始位置
+		//setMaxResult(int pageSize) 设置每页的查询条数
+		List<Student> list = session.createQuery(hql).setFirstResult(4).setMaxResults(3).list();
+
+	Fuzzy Query:
+		String hql = "from Student where name like :sname";
+		List<Student> list = session.createQuery(hql).setParameter("sname","%赵%").list();
+
+	Unique Query:
+		String hql = "from Student where id = :MyId";
+		List<Student> list = session.createQuery(hql).setInteger("MyId",(Integer) id).uniqueResult();
+
+	Projection Query:
+		//前提是Student类必须拥有Student(name,age)构造器
+		String hql = "select new Student(name,age) from Student";
+		List<Student> list = session.createQuery(hql).list();
+
+	Group Query:
+		String hql = "select age from Student GROUP BY age HAVING count(age) > 1";
+		List<Integer> ages = sesssion.createQuery(hql ).list();
+		
+
+QBC:
+	List<Student> list = session.createCriteria(Student.class).list();
+	List<Student> list = session.createCriteria(Student.class).addOrder(Order.desc("age")).list();
+
 File file = new File("E:" + File.separator + "hello.txt");
 BufferedReader in = new BufferedReader(new FileReader(“File Path”));
 

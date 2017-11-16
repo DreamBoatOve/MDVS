@@ -3,6 +3,7 @@ package beans.material.service.test.highThroughput.EIS;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,24 +16,22 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
-public class EIS 
+public class EIS
 {
 	@Id
 	@GenericGenerator(name="EIS_Id_Generator",strategy="native")
 	@GeneratedValue(generator="EIS_Id_Generator")
 	private Integer EIS_id;
-	
-	@OneToOne(targetEntity=EIS_Setting.class)
-	@JoinColumn(name="EIS_id")
-	//@JoinColumn(name="EIS_Setting",referencedColumnName="id")
+	@OneToOne(targetEntity=EIS_Setting.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="EIS_Setting_Id",referencedColumnName="id",unique=true)
 	private EIS_Setting EIS_Setting;
 	
-	@OneToMany(targetEntity=EIS_OCV.class)
-	@JoinColumn(name="EIS_id")
+	@OneToMany(targetEntity=EIS_OCV.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="EIS_Id")
 	private Set<EIS_OCV> EIS_OCV_Set = new HashSet<EIS_OCV>();
 	
-	@OneToMany(targetEntity=EIS_Bode_Nyquist.class)
-	@JoinColumn(name="EIS_id")
+	@OneToMany(targetEntity=EIS_Bode_Nyquist.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="EIS_Id")
 	private Set<EIS_Bode_Nyquist> EIS_Bode_Nyquist_Set = new HashSet<EIS_Bode_Nyquist>();
 	
 	public Integer getEIS_id() {
@@ -62,6 +61,11 @@ public class EIS
 	
 	public EIS()
 	{
-		super();
+	}
+	public EIS(EIS_Setting eIS_Setting, Set<EIS_OCV> eIS_OCV_Set,Set<EIS_Bode_Nyquist> eIS_Bode_Nyquist_Set) 
+	{
+		EIS_Setting = eIS_Setting;
+		EIS_OCV_Set = eIS_OCV_Set;
+		EIS_Bode_Nyquist_Set = eIS_Bode_Nyquist_Set;
 	}
 }

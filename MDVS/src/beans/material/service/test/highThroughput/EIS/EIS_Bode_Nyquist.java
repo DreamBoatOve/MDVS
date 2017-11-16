@@ -104,4 +104,11 @@ public class EIS_Bode_Nyquist
 	{
 		super();
 	}
+	@Override
+	public String toString() 
+	{
+		return "EIS_Bode_Nyquist [id=" + id + ", original_ID=" + original_ID + ", T=" + T + ", Freq=" + Freq
+				+ ", Zreal=" + Zreal + ", Zimg=" + Zimg + ", Zsig=" + Zsig + ", Zmod=" + Zmod + ", Zphz=" + Zphz
+				+ ", Idc=" + Idc + ", Vdc=" + Vdc + ", IErange=" + IErange + "]";
+	}
 }

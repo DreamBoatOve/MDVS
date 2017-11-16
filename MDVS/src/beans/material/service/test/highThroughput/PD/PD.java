@@ -3,6 +3,7 @@ package beans.material.service.test.highThroughput.PD;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,16 +23,16 @@ public class PD
 	@GeneratedValue(generator="PD_Id_Generator")
 	private Integer PD_id;
 	
-	@OneToOne(targetEntity=PD_Setting.class)
-	@JoinColumn(name="PD_id",referencedColumnName="PD_id")
+	@OneToOne(targetEntity=PD_Setting.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="PD_Setting_Id",referencedColumnName="id",unique=true)
 	private PD_Setting PD_Setting;
 	
-	@OneToMany(targetEntity=PD_OCV.class)
-	@JoinColumn(name="PD_id")
+	@OneToMany(targetEntity=PD_OCV.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="PD_Id")
 	private Set<PD_OCV> PD_OCV_Set = new HashSet<PD_OCV>();
 	
-	@OneToMany(targetEntity=PD_Chart.class)
-	@JoinColumn(name="PD_id")
+	@OneToMany(targetEntity=PD_Chart.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="PD_Id")
 	private Set<PD_Chart> PD_Chart_Set = new HashSet<PD_Chart>();
 
 	public Integer getPD_id() 
@@ -63,6 +64,11 @@ public class PD
 	
 	public PD() 
 	{
-		super();
+	}
+	public PD(PD_Setting pD_Setting, Set<PD_OCV> pD_OCV_Set, Set<PD_Chart> pD_Chart_Set) 
+	{
+		PD_Setting = pD_Setting;
+		PD_OCV_Set = pD_OCV_Set;
+		PD_Chart_Set = pD_Chart_Set;
 	}
 }

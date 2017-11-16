@@ -9,14 +9,16 @@
 		<form action="highThroughput/restoreFile.action" method="post" enctype="multipart/form-data">
 			<h1>添加材料-服役-测试-高通量组合实验</h1>
 				实验样品被划分为：
-				<input type="number" name="row" />行，<input type="number" name="column" />列
-				<input type="submit">
+				<input type="number" name="row" /> 行，<input type="number" name="column" /> 列
+				<input type="submit" value="提交"/>
 		</form><br>
-		<form action="" method="post" enctype="multipart/form-data">
-			上传EIS实验文件：<input type="file" name="EISFile" /><br>
+		<form action="EIS/addEIS.action" method="post" enctype="multipart/form-data">
+			上传EIS实验文件：<input type="file" name="EISFile" />
+			<input type="submit" value="提交"/>
 		</form><br>
-		<form action="" method="post" enctype="multipart/form-data">
-			上传PD实验文件：<input type="file" name="PDFile" /><br>
+		<form action="PD/addPD.action" method="post" enctype="multipart/form-data">
+			上传PD实验文件：<input type="file" name="PDFile" />
+			<input type="submit" value="提交"/>
 		</form><br>
 	</body>
 </html>
