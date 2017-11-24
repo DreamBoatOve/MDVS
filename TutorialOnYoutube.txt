@@ -1,0 +1,9 @@
+Download links:
+	Onlin Shopping:
+	Author:  khozema-nullwala
+		All in sum = 72
+		1 https://www.youtube.com/watch?v=JDvvQftwyr8&list=PLAXbOMavY3k1VJGqqhfqAn0tUSC14Qsvq
+	Ajax in Struts2:
+		https://www.youtube.com/watch?v=orrQCBYhWhc
+	Ajax in Struts 2 Annotations
+		https://www.youtube.com/watch?v=zyKX3Vb-bpc
