@@ -1,15 +1,20 @@
 package action.material.service.test.highThroughput.EIS;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 import Utils.service.test.highThroughput.EIS.EISParser;
 import beans.material.service.test.highThroughput.EIS.EIS;
@@ -20,10 +25,12 @@ import service.material.service.test.highThroughput.EIS.IEISService;
 @Namespace("/EIS")
 //@ParentPackage("struts-default")
 @ParentPackage("json-default")
-public class EISAction 
+public class EISAction extends ActionSupport
 {
 	private File EISFile;
-	private Integer EIS_Id;
+	/*jsonData includes all the parameters the front page need
+	 * */
+	private Map<String,Object> jsonData = new HashMap<String,Object>();
 	
 	@Autowired
 	@Qualifier("EISService")
@@ -37,11 +44,11 @@ public class EISAction
 	{
 		EISFile = eISFile;
 	}
-	public Integer getEIS_Id() {
-		return EIS_Id;
+	public Map<String, Object> getJsonData() {
+		return jsonData;
 	}
-	public void setEIS_Id(Integer eIS_Id) {
-		EIS_Id = eIS_Id;
+	public void setJsonData(Map<String, Object> jsonData) {
+		this.jsonData = jsonData;
 	}
 	public IEISService getEISService() 
 	{
@@ -54,13 +61,15 @@ public class EISAction
 	
 	/*解析EIS.DTA文件并将对应数据放入数据库
 	 * */
-	@Action(value="addEIS",results={@Result(type="json",params={"noCache","true","contentType","text/html","excludeNullProperties","true","root",""})})
-	public void addEIS()
+	//@Action(value="addEIS",results={@Result(type="json",params={"noCache","true","contentType","text/html","excludeNullProperties","true","root","EIS_Id"})})
+	@Action(value="addEIS",results={@Result(name="success",type="json",params={"root","jsonData"})})
+	public String addEIS()
 	{
 		EISParser ep = new EISParser(EISFile);
 		EIS e = new EIS(ep.getEIS_Setting(),ep.getEIS_OCVSet(),ep.getEIS_Bode_NyquistSet());
 		EISService.addEIS(e);
-		EIS_Id = e.getEIS_id();
-		System.out.println(EIS_Id);
+		//Put the id of EIS into the jsonData Map
+		jsonData.put("EIS_Id",e.getEIS_id());
+		return SUCCESS;
 	}
 }

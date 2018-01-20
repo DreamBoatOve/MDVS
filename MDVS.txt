@@ -1,7 +1,14 @@
-数据日期格式的转换
+执行Action后，页面不跳转
+	struts2中在执行action后，不希望跳转到一个页面而停留在当前页
+	那就在jsp页面使用<s:action name="Action请求名" namespace="命名空间" executeResult="false"/>
+将EIS_Id和PD_Id通过JSON传到前端页面
+highThroughputAction把highThroughput添加到数据库并返回highThroughput_Id到前端页面
+test
+service
+material
+
 mysql一条记录中存储多张图片
 搞清struts2
-没必要保存EIS、PD实验文件的文件名，从缓存中获取的只是临时文件名
 --------------------------------------
 	none
 	save-update

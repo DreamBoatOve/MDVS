@@ -1,0 +1,21 @@
+Ajax&Action
+	$(document).ready(function(){
+		$('#ElementId').click(function(){
+			$.ajax({
+				type:"GET/POST",
+				url:'${pageContext.request.contextPath}/ActionNameSpace/ActionName.html',
+				success:
+					function(response)
+					{
+						$('#ElementId').html(response);
+					}
+			});
+		});
+	});
+	
+	@Action(value="ActionName",
+			results={
+						@Result(
+								name="SUCCESS(DEFAULT)/ERROR", 
+								type="json", 
+								params={"root","jsonDataMap"})})
